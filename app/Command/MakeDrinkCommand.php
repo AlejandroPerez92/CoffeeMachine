@@ -1,6 +1,6 @@
 <?php
 
-namespace Deliverea\CoffeeMachine\App\Console;
+namespace Deliverea\CoffeeMachine\App\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -11,6 +11,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 class MakeDrinkCommand extends Command
 {
     protected static $defaultName = 'app:order-drink';
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     protected function configure()
     {
@@ -43,6 +48,7 @@ class MakeDrinkCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+
         $drinkType = strtolower($input->getArgument('drink-type'));
         if (!in_array($drinkType, ['tea', 'coffee', 'chocolate'])) {
             $output->writeln('The drink type should be tea, coffee or chocolate.');
@@ -57,19 +63,19 @@ class MakeDrinkCommand extends Command
                 case 'tea':
                     if ($money < 0.4) {
                         $output->writeln('The tea costs 0.4.');
-                        return;
+                        return Command::FAILURE;
                     }
                     break;
                 case 'coffee':
                     if ($money < 0.5) {
                         $output->writeln('The coffee costs 0.5.');
-                        return;
+                        return Command::FAILURE;
                     }
                     break;
                 case 'chocolate':
                     if ($money < 0.6) {
                         $output->writeln('The chocolate costs 0.6.');
-                        return;
+                        return Command::FAILURE;
                     }
                     break;
             }
@@ -94,5 +100,6 @@ class MakeDrinkCommand extends Command
                 $output->writeln('The number of sugars should be between 0 and 2.');
             }
         }
+        return Command::SUCCESS;
     }
 }

@@ -1,0 +1,12 @@
+services:
+  _defaults:
+    autowire: true
+
+  Deliverea\CoffeeMachine\App\:
+    resource: '../../app'
+
+  service.test:
+    class: Deliverea\CoffeeMachine\App\Console
+
+  Symfony\Component\Console\Application:
+    public: true

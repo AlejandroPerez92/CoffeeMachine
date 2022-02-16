@@ -4,4 +4,4 @@ docker run -it --rm \
     --name my-running-script \
     -v "$PWD":/usr/src/myapp \
     -w /usr/src/myapp \
-    coffee-machine.php-cli php index.php $@
+    coffee-machine.php-cli php ./bin/console.php $@
