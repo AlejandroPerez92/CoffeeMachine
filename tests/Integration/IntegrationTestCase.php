@@ -11,14 +11,14 @@ class IntegrationTestCase extends TestCase
     /** @var Application */
     protected $application;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
         $this->application = new Application();
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
 
         parent::tearDown();
