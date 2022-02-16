@@ -8,7 +8,8 @@
         "psr-4": {
             "Deliverea\\CoffeeMachine\\": "src",
             "Deliverea\\CoffeeMachine\\Tests\\Unit\\": "tests/Unit",
-            "Deliverea\\CoffeeMachine\\Tests\\Integration\\": "tests/Integration"
+            "Deliverea\\CoffeeMachine\\Tests\\Integration\\": "tests/Integration",
+            "Deliverea\\CoffeeMachine\\App\\": "app"
         }
     }
 }

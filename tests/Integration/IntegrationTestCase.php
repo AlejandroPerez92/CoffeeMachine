@@ -2,7 +2,6 @@
 
 namespace Deliverea\CoffeeMachine\Tests\Integration;
 
-use Deliverea\CoffeeMachine\Console\MysqlPdoClient;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Application;
 
