@@ -1,3 +1,13 @@
+tactician:
+  commandbus:
+    default:
+      middleware:
+        - tactician.middleware.locking
+        - tactician.middleware.command_handler
+    query:
+      middleware:
+        - tactician.commandbus.query.middleware.command_handler
+
 services:
   _defaults:
     autowire: true
@@ -5,8 +15,10 @@ services:
   Deliverea\CoffeeMachine\App\:
     resource: '../../app'
 
-  service.test:
-    class: Deliverea\CoffeeMachine\App\Console
-
   Symfony\Component\Console\Application:
     public: true
+
+  delivera.product_by_name.query_handler:
+    class: Deliverea\CoffeeMachine\Product\Application\Query\GetProductByNameQueryHandler
+    tags:
+      - { name: tactician.handler, typehints: true, bus: query }

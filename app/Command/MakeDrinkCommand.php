@@ -2,6 +2,9 @@
 
 namespace Deliverea\CoffeeMachine\App\Command;
 
+use Deliverea\CoffeeMachine\Product\Application\Command\TestCommand;
+use Deliverea\CoffeeMachine\Product\Application\Query\GetProductByNameQuery;
+use League\Tactician\CommandBus;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -11,10 +14,14 @@ use Symfony\Component\Console\Output\OutputInterface;
 class MakeDrinkCommand extends Command
 {
     protected static $defaultName = 'app:order-drink';
+    private CommandBus $defaultBus;
+    private CommandBus $queryBus;
 
-    public function __construct()
+    public function __construct(CommandBus $defaultBus, CommandBus $queryBus)
     {
         parent::__construct();
+        $this->defaultBus = $defaultBus;
+        $this->queryBus = $queryBus;
     }
 
     protected function configure()
@@ -63,18 +70,21 @@ class MakeDrinkCommand extends Command
                 case 'tea':
                     if ($money < 0.4) {
                         $output->writeln('The tea costs 0.4.');
+
                         return Command::FAILURE;
                     }
                     break;
                 case 'coffee':
                     if ($money < 0.5) {
                         $output->writeln('The coffee costs 0.5.');
+
                         return Command::FAILURE;
                     }
                     break;
                 case 'chocolate':
                     if ($money < 0.6) {
                         $output->writeln('The chocolate costs 0.6.');
+
                         return Command::FAILURE;
                     }
                     break;
@@ -91,7 +101,7 @@ class MakeDrinkCommand extends Command
 
                 if ($sugars > 0) {
                     $stick = true;
-                    if($stick) {
+                    if ($stick) {
                         $output->write(' with ' . $sugars . ' sugars (stick included)');
                     }
                 }
@@ -100,6 +110,7 @@ class MakeDrinkCommand extends Command
                 $output->writeln('The number of sugars should be between 0 and 2.');
             }
         }
+
         return Command::SUCCESS;
     }
 }
