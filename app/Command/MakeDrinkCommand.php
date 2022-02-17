@@ -4,6 +4,7 @@ namespace Deliverea\CoffeeMachine\App\Command;
 
 use Deliverea\CoffeeMachine\Product\Application\Command\TestCommand;
 use Deliverea\CoffeeMachine\Product\Application\Query\GetProductByNameQuery;
+use Deliverea\CoffeeMachine\Product\Application\Query\GetProductByNameResponse;
 use League\Tactician\CommandBus;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -57,8 +58,10 @@ class MakeDrinkCommand extends Command
     {
 
         $drinkType = strtolower($input->getArgument('drink-type'));
-        if (!in_array($drinkType, ['tea', 'coffee', 'chocolate'])) {
-            $output->writeln('The drink type should be tea, coffee or chocolate.');
+        /** @var GetProductByNameResponse $productData */
+        $productData = $this->queryBus->handle(new GetProductByNameQuery($drinkType));
+        if ($productData->error()) {
+            $output->writeln($productData->error());
         } else {
             /**
              * Tea       --> 0.4

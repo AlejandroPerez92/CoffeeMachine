@@ -5,7 +5,7 @@ namespace Deliverea\CoffeeMachine\Product\Application\Query;
 
 final class GetProductByNameQuery
 {
-    public string $name;
+    private string $name;
 
     public function __construct(string $name)
     {

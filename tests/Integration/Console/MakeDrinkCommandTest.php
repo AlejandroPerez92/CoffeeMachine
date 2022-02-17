@@ -11,8 +11,6 @@ class MakeDrinkCommandTest extends IntegrationTestCase
     protected function setUp(): void
     {
         parent::setUp();
-
-        $this->application->add(new MakeDrinkCommand());
     }
 
     /**
