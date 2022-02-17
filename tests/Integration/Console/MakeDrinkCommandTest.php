@@ -2,7 +2,6 @@
 
 namespace Deliverea\CoffeeMachine\Tests\Integration\Console;
 
-use Deliverea\CoffeeMachine\App\Command\MakeDrinkCommand;
 use Deliverea\CoffeeMachine\Tests\Integration\IntegrationTestCase;
 use Symfony\Component\Console\Tester\CommandTester;
 

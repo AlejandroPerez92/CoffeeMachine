@@ -1,3 +1,5 @@
+imports:
+  - { resource: fixtures/products.yaml }
 tactician:
   commandbus:
     default:
@@ -20,5 +22,13 @@ services:
 
   delivera.product_by_name.query_handler:
     class: Deliverea\CoffeeMachine\Product\Application\Query\GetProductByNameQueryHandler
+    arguments:
+      - '@delivera.product.in_memory_repository'
     tags:
       - { name: tactician.handler, typehints: true, bus: query }
+
+###Repositories
+  delivera.product.in_memory_repository:
+    class: Deliverea\CoffeeMachine\Product\Infrastructure\InMemoryProductRepository
+    arguments:
+      - '%products.map.fixtures%'
