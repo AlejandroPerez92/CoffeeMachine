@@ -5,12 +5,8 @@ namespace Deliverea\CoffeeMachine\Tests\Unit\Product\Application\Query;
 
 use Deliverea\CoffeeMachine\Product\Application\Query\GetProductByNameQuery;
 use Deliverea\CoffeeMachine\Product\Application\Query\GetProductByNameQueryHandler;
-use Deliverea\CoffeeMachine\Product\Domain\Exception\NotFoundProductException;
-use Deliverea\CoffeeMachine\Product\Domain\Product;
-use Deliverea\CoffeeMachine\Product\Domain\ProductId;
 use Deliverea\CoffeeMachine\Product\Domain\ProductRepositoryInterface;
 use Deliverea\CoffeeMachine\Product\Infrastructure\InMemoryProductRepository;
-use Deliverea\CoffeeMachine\Shared\Domain\Money\Money;
 use PHPUnit\Framework\TestCase;
 
 final class GetProductByNameQueryHandlerTest extends TestCase

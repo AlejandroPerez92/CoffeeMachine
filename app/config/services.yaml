@@ -2,7 +2,7 @@ imports:
   - { resource: fixtures/products.yaml }
 tactician:
   commandbus:
-    default:
+    command:
       middleware:
         - tactician.middleware.locking
         - tactician.middleware.command_handler
