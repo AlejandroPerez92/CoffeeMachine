@@ -103,6 +103,17 @@ final class CreateOrderLineCommandHandlerTest extends TestCase
         $this->clearOrderRepo();
     }
 
+    /**
+     * @test
+     */
+    public function given_line_with_0_units_when_handle_then_line_not_be_added()
+    {
+        $this->handler->handle(new CreateOrderLineCommand('sugar', 0, '45b4b0e2-4acc-45a2-8276-a73e44a66576'));
+        $order = $this->orderRepository->getByIdOrFail(new OrderId('45b4b0e2-4acc-45a2-8276-a73e44a66576'));
+        self::assertCount(0, $order->lines());
+        $this->clearOrderRepo();
+    }
+
     private function clearOrderRepo()
     {
         $this->orderRepository = new InMemoryOrderRepository([
@@ -111,6 +122,7 @@ final class CreateOrderLineCommandHandlerTest extends TestCase
                 [],
                 new Money(0),
                 new \DateTimeImmutable(),
+                false,
                 false)
         ]);
     }

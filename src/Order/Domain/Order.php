@@ -6,6 +6,7 @@ namespace Deliverea\CoffeeMachine\Order\Domain;
 use Deliverea\CoffeeMachine\Order\Domain\Exception\NotEnoughAmountToPayOrder;
 use Deliverea\CoffeeMachine\Shared\Domain\Aggregate\AggregateRoot;
 use Deliverea\CoffeeMachine\Shared\Domain\Money\Money;
+use Deliverea\CoffeeMachine\Shared\Domain\PositiveInteger\PositiveInteger;
 
 final class Order extends AggregateRoot
 {
@@ -81,6 +82,10 @@ final class Order extends AggregateRoot
 
     public function addLine(OrderLine $line)
     {
+        if ($line->units()->lessThanOrEqual(new PositiveInteger(0))) {
+            return;
+        }
+
         $this->lines[$line->productName()] = $line;
         $this->total->increment($line->total());
     }
