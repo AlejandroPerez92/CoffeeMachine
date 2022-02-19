@@ -8,10 +8,17 @@ use Deliverea\CoffeeMachine\Order\Domain\OrderId;
 final class CreateOrderCommand
 {
     private OrderId $orderId;
+    private bool $hot;
 
-    public function __construct(OrderId $orderId)
+    public function __construct(OrderId $orderId, bool $hot)
     {
         $this->orderId = $orderId;
+        $this->hot = $hot;
+    }
+
+    public function hot(): bool
+    {
+        return $this->hot;
     }
 
     public function orderId(): OrderId

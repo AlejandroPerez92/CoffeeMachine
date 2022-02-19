@@ -31,7 +31,7 @@ final class PayOrderLineCommandHandlerTest extends TestCase
      */
     public function given_order_and_amount_when_handle_then_order_should_be_paid()
     {
-        $this->handler->handle(new PayOrderCommand(new OrderId('45b4b0e2-4acc-45a2-8276-a73e44a66576'),40));
+        $this->handler->handle(new PayOrderCommand(new OrderId('45b4b0e2-4acc-45a2-8276-a73e44a66576'), 40));
         $order = $this->orderRepository->getByIdOrFail(new OrderId('45b4b0e2-4acc-45a2-8276-a73e44a66576'));
         self::assertTrue($order->paid());
     }
@@ -42,7 +42,7 @@ final class PayOrderLineCommandHandlerTest extends TestCase
     public function given_order_and_less_amount_when_handle_then_exception_should_be_rose()
     {
         $this->expectException(NotEnoughAmountToPayOrder::class);
-        $this->handler->handle(new PayOrderCommand(new OrderId('45b4b0e2-4acc-45a2-8276-a73e44a66576'),39));
+        $this->handler->handle(new PayOrderCommand(new OrderId('45b4b0e2-4acc-45a2-8276-a73e44a66576'), 39));
         $order = $this->orderRepository->getByIdOrFail(new OrderId('45b4b0e2-4acc-45a2-8276-a73e44a66576'));
     }
 
@@ -54,6 +54,7 @@ final class PayOrderLineCommandHandlerTest extends TestCase
                 [],
                 new Money(40),
                 new \DateTimeImmutable(),
+                false,
                 false)
         ]);
     }

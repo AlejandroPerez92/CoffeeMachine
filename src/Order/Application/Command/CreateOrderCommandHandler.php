@@ -21,7 +21,7 @@ final class CreateOrderCommandHandler
 
     public function handle(CreateOrderCommand $command): void
     {
-        $order = Order::Create($command->orderId());
+        $order = Order::Create($command->orderId(), $command->hot());
         $this->orderRepository->save($order);
     }
 }

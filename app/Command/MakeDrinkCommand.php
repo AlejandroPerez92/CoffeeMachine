@@ -69,7 +69,7 @@ class MakeDrinkCommand extends Command
 
         $orderId = OrderId::Create();
 
-        $this->commandBus->handle(new CreateOrderCommand($orderId));
+        $this->commandBus->handle(new CreateOrderCommand($orderId, $extraHot));
 
         try {
             $this->commandBus->handle(new CreateOrderLineCommand($drinkType, 1, $orderId->value()));
