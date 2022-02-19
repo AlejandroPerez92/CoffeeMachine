@@ -8,7 +8,8 @@
         "symfony/yaml": "^6.0",
         "symfony/http-kernel": "^6.0",
         "league/tactician-bundle": "^1.3",
-        "ramsey/uuid": "^4.2"
+        "ramsey/uuid": "^4.2",
+        "symfony/event-dispatcher": "^6.0"
     },
     "autoload": {
         "psr-4": {

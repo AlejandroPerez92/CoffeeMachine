@@ -9,6 +9,7 @@ use Deliverea\CoffeeMachine\Order\Domain\OrderLine;
 use Deliverea\CoffeeMachine\Order\Domain\OrderRepositoryInterface;
 use Deliverea\CoffeeMachine\Order\Domain\ProductRepositoryInterface;
 use Deliverea\CoffeeMachine\Order\Domain\PromotionRepositoryInterface;
+use Deliverea\CoffeeMachine\Shared\Domain\EventBus\EventBusInterface;
 use Deliverea\CoffeeMachine\Shared\Domain\PositiveInteger\PositiveInteger;
 
 final class CreateOrderLineCommandHandler
@@ -16,15 +17,18 @@ final class CreateOrderLineCommandHandler
     private ProductRepositoryInterface $productRepository;
     private PromotionRepositoryInterface $promotionRepository;
     private OrderRepositoryInterface $orderRepository;
+    private EventBusInterface $eventBus;
 
     public function __construct(
         ProductRepositoryInterface $productRepository,
         PromotionRepositoryInterface $promotionRepository,
-        OrderRepositoryInterface $orderRepository)
+        OrderRepositoryInterface $orderRepository,
+        EventBusInterface $eventBus)
     {
         $this->productRepository = $productRepository;
         $this->promotionRepository = $promotionRepository;
         $this->orderRepository = $orderRepository;
+        $this->eventBus = $eventBus;
     }
 
     public function handle(CreateOrderLineCommand $command): void
@@ -43,6 +47,8 @@ final class CreateOrderLineCommandHandler
         }
 
         $this->orderRepository->save($order);
+
+        $this->eventBus->publish(...$order->pullDomainEvents());
     }
 
     private function createOrderLine(string $productName, PositiveInteger $units): OrderLine

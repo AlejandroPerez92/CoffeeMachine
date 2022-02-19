@@ -7,7 +7,6 @@ final class ConsoleResponseFactory
 {
     public static function Create(ConsoleQueryObject $object): string
     {
-        $response = '';
         $response = 'You have ordered a ' . $object->product();
 
         if ($object->isExtraHot()) {

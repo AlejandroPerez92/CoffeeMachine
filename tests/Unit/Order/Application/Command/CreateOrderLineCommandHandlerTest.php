@@ -14,7 +14,9 @@ use Deliverea\CoffeeMachine\Order\Domain\PromotionRepositoryInterface;
 use Deliverea\CoffeeMachine\Order\Infrastructure\InMemoryOrderRepository;
 use Deliverea\CoffeeMachine\Order\Infrastructure\InMemoryProductRepository;
 use Deliverea\CoffeeMachine\Order\Infrastructure\InMemoryPromotionRepository;
+use Deliverea\CoffeeMachine\Shared\Domain\EventBus\EventBusInterface;
 use Deliverea\CoffeeMachine\Shared\Domain\Money\Money;
+use Deliverea\CoffeeMachine\Tests\Unit\Utils\EventBusTest;
 use PHPUnit\Framework\TestCase;
 
 final class CreateOrderLineCommandHandlerTest extends TestCase
@@ -23,6 +25,7 @@ final class CreateOrderLineCommandHandlerTest extends TestCase
     private OrderRepositoryInterface $orderRepository;
     private PromotionRepositoryInterface $promotionRepository;
     private CreateOrderLineCommandHandler $handler;
+    private EventBusInterface $eventBus;
 
     protected function setUp(): void
     {
@@ -52,10 +55,13 @@ final class CreateOrderLineCommandHandlerTest extends TestCase
             ]
         ]);
 
+        $this->eventBus = new EventBusTest();
+
         $this->handler = new CreateOrderLineCommandHandler(
             $this->productRepository,
             $this->promotionRepository,
-            $this->orderRepository
+            $this->orderRepository,
+            $this->eventBus
         );
     }
 
@@ -112,6 +118,16 @@ final class CreateOrderLineCommandHandlerTest extends TestCase
         $order = $this->orderRepository->getByIdOrFail(new OrderId('45b4b0e2-4acc-45a2-8276-a73e44a66576'));
         self::assertCount(0, $order->lines());
         $this->clearOrderRepo();
+    }
+
+    /**
+     * @test
+     */
+    public function given_line_when_handle_then_should_dispatch_event()
+    {
+        $this->handler->handle(new CreateOrderLineCommand('tea', 1, '45b4b0e2-4acc-45a2-8276-a73e44a66576'));
+        $order = $this->orderRepository->getByIdOrFail(new OrderId('45b4b0e2-4acc-45a2-8276-a73e44a66576'));
+        self::assertTrue($this->eventBus->hasEvents('order.line.added'));
     }
 
     private function clearOrderRepo()

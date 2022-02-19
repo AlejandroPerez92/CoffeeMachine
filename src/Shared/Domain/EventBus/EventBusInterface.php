@@ -4,5 +4,5 @@ namespace Deliverea\CoffeeMachine\Shared\Domain\EventBus;
 
 interface EventBusInterface
 {
-    public function publish(DomainEvent $event): void;
+    public function publish(DomainEvent ...$events): void;
 }

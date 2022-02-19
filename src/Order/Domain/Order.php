@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Deliverea\CoffeeMachine\Order\Domain;
 
+use Deliverea\CoffeeMachine\Order\Domain\Event\OrderLineAdded;
 use Deliverea\CoffeeMachine\Order\Domain\Exception\NotEnoughAmountToPayOrder;
 use Deliverea\CoffeeMachine\Shared\Domain\Aggregate\AggregateRoot;
 use Deliverea\CoffeeMachine\Shared\Domain\Money\Money;
@@ -88,6 +89,8 @@ final class Order extends AggregateRoot
 
         $this->lines[$line->productName()] = $line;
         $this->total->increment($line->total());
+
+        $this->pushEvent(new OrderLineAdded($this->id, $line));
     }
 
     public function hot(): bool

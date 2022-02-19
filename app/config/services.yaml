@@ -15,6 +15,7 @@ services:
   _defaults:
     autowire: true
 
+  ### Handlers
   Deliverea\CoffeeMachine\App\:
     resource: '../../app'
 
@@ -41,7 +42,13 @@ services:
     tags:
       - { name: tactician.handler, command: Deliverea\CoffeeMachine\Order\Infrastructure\Ui\ConsoleQueryObject, bus: query }
 
-  ###Repositories
+  ### Subscribers
+  delivera.sales.order.subscriber:
+    class: Deliverea\CoffeeMachine\Sales\Infrastructure\OrderEventSubscriber
+    tags:
+      - { name: domain.event_subscriber }
+
+  ### Repositories
   delivera.product.in_memory_repository:
     class: Deliverea\CoffeeMachine\Order\Infrastructure\InMemoryProductRepository
     alias:
@@ -52,8 +59,13 @@ services:
     class: Deliverea\CoffeeMachine\Order\Infrastructure\InMemoryOrderRepository
   Deliverea\CoffeeMachine\Order\Domain\OrderRepositoryInterface: '@deliverea.order.repository'
 
-  delivera.promotion.in_memory_repository:
+  deliverea.promotion.in_memory_repository:
     class: Deliverea\CoffeeMachine\Order\Infrastructure\InMemoryPromotionRepository
     arguments:
       - '%promotions.map.fixtures%'
-  Deliverea\CoffeeMachine\Order\Domain\PromotionRepositoryInterface: '@delivera.promotion.in_memory_repository'
+  Deliverea\CoffeeMachine\Order\Domain\PromotionRepositoryInterface: '@deliverea.promotion.in_memory_repository'
+
+  ### Bus
+  deliverea.event_bus:
+    class: Deliverea\CoffeeMachine\Shared\Infrastructure\Eventbus\EventBusWrapper
+  Deliverea\CoffeeMachine\Shared\Domain\EventBus\EventBusInterface: '@deliverea.event_bus'
