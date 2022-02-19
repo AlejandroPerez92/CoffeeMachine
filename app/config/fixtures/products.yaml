@@ -1,17 +1,22 @@
 parameters:
   products.map.fixtures:
-    0339259c-9ea5-42b6-bcab-861776be81b9:
-        id: '0339259c-9ea5-42b6-bcab-861776be81b9'
-        name: 'tea'
-        price: 40
-        date: '2022-01-01 00:00:00'
-    98b9e35c-28b7-4a58-9321-719387a01827:
-      id: '98b9e35c-28b7-4a58-9321-719387a01827'
-      name: 'coffee'
+    tea:
+      price: 40
+      date: '2022-01-01 00:00:00'
+      limit: 1
+    coffee:
       price: 50
       date: '2022-01-01 00:00:00'
-    16c08337-ff6f-4388-9ed3-0893c59c77b2:
-      id: '16c08337-ff6f-4388-9ed3-0893c59c77b2'
-      name: 'chocolate'
+      limit: 1
+    chocolate:
       price: 60
       date: '2022-01-01 00:00:00'
+      limit: 1
+    sugar:
+      price: 0
+      date: '2022-01-01 00:00:00'
+      limit: 2
+    stick:
+      price: 0
+      date: '2022-01-01 00:00:00'
+      limit: 1

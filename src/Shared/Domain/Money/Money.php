@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Deliverea\CoffeeMachine\Shared\Domain\Money;
 
+use Deliverea\CoffeeMachine\Shared\Domain\PositiveInteger\PositiveInteger;
+
 final class Money
 {
     private int $value;
@@ -29,8 +31,23 @@ final class Money
         return $this->value === $value->value();
     }
 
+    public function lessThan(Money $value): bool
+    {
+        return $this->value < $value->value();
+    }
+
+    public function increment(Money $value): void
+    {
+        $this->value += $value->value();
+    }
+
+    public function multiply(PositiveInteger $value): void
+    {
+        $this->value = $this->value * $value->value();
+    }
+
     public function toFloat(): float
     {
-        return $this->value * 100;
+        return $this->value / 100;
     }
 }

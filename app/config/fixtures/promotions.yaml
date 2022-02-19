@@ -1,0 +1,5 @@
+parameters:
+  promotions.map.fixtures:
+    - applyProduct: 'sugar'
+      fromUnits: 1
+      productToAdd: 'stick'

@@ -40,6 +40,11 @@ class PositiveInteger
         return $this->value <= $amount->value();
     }
 
+    public function moreThanOrEqual(PositiveInteger $amount): bool
+    {
+        return $this->value >= $amount->value();
+    }
+
     public function equal(PositiveInteger $toValue): bool
     {
         return $this->value === $toValue->value;

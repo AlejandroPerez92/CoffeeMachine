@@ -1,8 +1,9 @@
 imports:
   - { resource: fixtures/products.yaml }
+  - { resource: fixtures/promotions.yaml}
 tactician:
   commandbus:
-    command:
+    default:
       middleware:
         - tactician.middleware.locking
         - tactician.middleware.command_handler
@@ -20,15 +21,34 @@ services:
   Symfony\Component\Console\Application:
     public: true
 
-  delivera.product_by_name.query_handler:
-    class: Deliverea\CoffeeMachine\Product\Application\Query\GetProductByNameQueryHandler
-    arguments:
-      - '@delivera.product.in_memory_repository'
+  delivera.order.create_handler:
+    class: Deliverea\CoffeeMachine\Order\Application\Command\CreateOrderCommandHandler
     tags:
-      - { name: tactician.handler, typehints: true, bus: query }
+      - { name: tactician.handler, typehints: true, bus: default }
+
+  delivera.line.create_handler:
+    class: Deliverea\CoffeeMachine\Order\Application\Command\CreateOrderLineCommandHandler
+    tags:
+      - { name: tactician.handler, typehints: true, bus: default }
+
+  delivera.order.pay_handler:
+    class: Deliverea\CoffeeMachine\Order\Application\Command\PayOrderCommandHandler
+    tags:
+      - { name: tactician.handler, typehints: true, bus: default }
 
 ###Repositories
   delivera.product.in_memory_repository:
-    class: Deliverea\CoffeeMachine\Product\Infrastructure\InMemoryProductRepository
+    class: Deliverea\CoffeeMachine\Order\Infrastructure\InMemoryProductRepository
+    alias:
     arguments:
       - '%products.map.fixtures%'
+  Deliverea\CoffeeMachine\Order\Domain\ProductRepositoryInterface: '@delivera.product.in_memory_repository'
+  deliverea.order.repository:
+    class: Deliverea\CoffeeMachine\Order\Infrastructure\InMemoryOrderRepository
+  Deliverea\CoffeeMachine\Order\Domain\OrderRepositoryInterface: '@deliverea.order.repository'
+
+  delivera.promotion.in_memory_repository:
+    class: Deliverea\CoffeeMachine\Order\Infrastructure\InMemoryPromotionRepository
+    arguments:
+      - '%promotions.map.fixtures%'
+  Deliverea\CoffeeMachine\Order\Domain\PromotionRepositoryInterface: '@delivera.promotion.in_memory_repository'

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Product\Domain\Exception;
+namespace Deliverea\CoffeeMachine\Order\Domain\Exception;
 
 final class NotFoundProductException extends \RuntimeException
 {

@@ -66,6 +66,9 @@ class MakeDrinkCommandTest extends IntegrationTestCase
             [
                 'tea', '0.5', 3, 1, 'The number of sugars should be between 0 and 2.' . PHP_EOL
             ],
+            [
+                'caca', '0.5', 1, 1, 'The drink type should be tea, coffee or chocolate.' . PHP_EOL
+            ]
         ];
     }
 }

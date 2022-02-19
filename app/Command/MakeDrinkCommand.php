@@ -2,8 +2,14 @@
 
 namespace Deliverea\CoffeeMachine\App\Command;
 
-use Deliverea\CoffeeMachine\Product\Application\Query\GetProductByNameQuery;
-use Deliverea\CoffeeMachine\Product\Application\Query\GetProductByNameResponse;
+use Deliverea\CoffeeMachine\Order\Application\Command\CreateOrderCommand;
+use Deliverea\CoffeeMachine\Order\Application\Command\CreateOrderLineCommand;
+use Deliverea\CoffeeMachine\Order\Application\Command\PayOrderCommand;
+use Deliverea\CoffeeMachine\Order\Domain\Exception\LimitUnitsException;
+use Deliverea\CoffeeMachine\Order\Domain\Exception\NotEnoughAmountToPayOrder;
+use Deliverea\CoffeeMachine\Order\Domain\Exception\NotFoundProductException;
+use Deliverea\CoffeeMachine\Order\Domain\OrderId;
+use Deliverea\CoffeeMachine\Shared\Domain\PositiveInteger\NegativeValueException;
 use League\Tactician\CommandBus;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -57,48 +63,32 @@ class MakeDrinkCommand extends Command
     {
 
         $drinkType = strtolower($input->getArgument('drink-type'));
-        /** @var GetProductByNameResponse $productData */
-        $productData = $this->queryBus->handle(new GetProductByNameQuery($drinkType));
-        if ($productData->error()) {
-            $output->writeln($productData->error());
+        $money = (float) $input->getArgument('money');
+        $sugars = (int) $input->getArgument('sugars');
+        $extraHot = $input->getOption('extra-hot');
+
+        $orderId = OrderId::Create();
+
+        $this->commandBus->handle(new CreateOrderCommand($orderId));
+
+        try {
+            $this->commandBus->handle(new CreateOrderLineCommand($drinkType, 1, $orderId->value()));
+            $this->commandBus->handle(new CreateOrderLineCommand('sugar', $sugars, $orderId->value()));
+        } catch (NotFoundProductException $e) {
+            $output->writeln('The drink type should be tea, coffee or chocolate.');
+
+            return Command::FAILURE;
+        } catch (LimitUnitsException | NegativeValueException $e) {
+            $output->writeln('The number of sugars should be between 0 and 2.');
 
             return Command::FAILURE;
         }
-        /**
-         * Tea       --> 0.4
-         * Coffee    --> 0.5
-         * Chocolate --> 0.6
-         */
-        $money = $input->getArgument('money');
-        switch ($drinkType) {
-            case 'tea':
-                if ($money < 0.4) {
-                    $output->writeln('The tea costs 0.4.');
 
-                    return Command::FAILURE;
-                }
-                break;
-            case 'coffee':
-                if ($money < 0.5) {
-                    $output->writeln('The coffee costs 0.5.');
-
-                    return Command::FAILURE;
-                }
-                break;
-            case 'chocolate':
-                if ($money < 0.6) {
-                    $output->writeln('The chocolate costs 0.6.');
-
-                    return Command::FAILURE;
-                }
-                break;
-        }
-
-        $sugars = $input->getArgument('sugars');
-        $extraHot = $input->getOption('extra-hot');
-
-        if ($sugars < 0 || $sugars > 2) {
-            $output->writeln('The number of sugars should be between 0 and 2.');
+        try {
+            $amount = (int) round(($money * 100), 0);
+            $this->commandBus->handle(new PayOrderCommand($orderId, $amount));
+        } catch (NotEnoughAmountToPayOrder $e) {
+            $output->writeln(sprintf('The %s costs %s.', $drinkType, $e->cost()));
 
             return Command::FAILURE;
         }
