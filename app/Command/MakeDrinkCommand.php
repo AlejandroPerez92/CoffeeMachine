@@ -9,6 +9,8 @@ use Deliverea\CoffeeMachine\Order\Domain\Exception\LimitUnitsException;
 use Deliverea\CoffeeMachine\Order\Domain\Exception\NotEnoughAmountToPayOrder;
 use Deliverea\CoffeeMachine\Order\Domain\Exception\NotFoundProductException;
 use Deliverea\CoffeeMachine\Order\Domain\OrderId;
+use Deliverea\CoffeeMachine\Order\Infrastructure\Ui\ConsoleQueryObject;
+use Deliverea\CoffeeMachine\Order\Infrastructure\Ui\ConsoleResponseFactory;
 use Deliverea\CoffeeMachine\Shared\Domain\PositiveInteger\NegativeValueException;
 use League\Tactician\CommandBus;
 use Symfony\Component\Console\Command\Command;
@@ -93,18 +95,8 @@ class MakeDrinkCommand extends Command
             return Command::FAILURE;
         }
 
-        $output->write('You have ordered a ' . $drinkType);
-
-        if ($extraHot) {
-            $output->write(' extra hot');
-        }
-
-        if ($sugars > 0) {
-            $output->write(' with ' . $sugars . ' sugars (stick included)');
-        }
-
-        $output->writeln('');
-
+        $orderResult = $this->queryBus->handle(new ConsoleQueryObject($orderId->value()));
+        $output->writeln(ConsoleResponseFactory::Create($orderResult));
         return Command::SUCCESS;
     }
 }

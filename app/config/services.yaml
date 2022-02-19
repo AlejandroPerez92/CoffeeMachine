@@ -1,6 +1,6 @@
 imports:
   - { resource: fixtures/products.yaml }
-  - { resource: fixtures/promotions.yaml}
+  - { resource: fixtures/promotions.yaml }
 tactician:
   commandbus:
     default:
@@ -36,7 +36,12 @@ services:
     tags:
       - { name: tactician.handler, typehints: true, bus: default }
 
-###Repositories
+  deliverea.order.query_handler:
+    class: Deliverea\CoffeeMachine\Order\Application\Query\GetOrderQueryHandler
+    tags:
+      - { name: tactician.handler, command: Deliverea\CoffeeMachine\Order\Infrastructure\Ui\ConsoleQueryObject, bus: query }
+
+  ###Repositories
   delivera.product.in_memory_repository:
     class: Deliverea\CoffeeMachine\Order\Infrastructure\InMemoryProductRepository
     alias:
