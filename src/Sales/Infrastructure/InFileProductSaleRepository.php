@@ -50,17 +50,17 @@ final class InFileProductSaleRepository implements ProductSaleRepositoryInterfac
     private function loadData()
     {
         try{
-            $fileData = file_get_contents($this->fileRoute);
+            $fileData = @file_get_contents($this->fileRoute);
+            if(!$fileData){
+                throw new \RuntimeException('File not found');
+            }
             $this->data = unserialize($fileData);
         }catch (\Exception $e){
             $this->saveData();
             $this->data = [];
         }
 
-//        if(!$fileData){
-//            $this->saveData();
-//            $this->data = [];
-//        }
+
 
     }
 }
