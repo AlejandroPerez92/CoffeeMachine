@@ -7,7 +7,7 @@ use Deliverea\CoffeeMachine\Order\Application\Command\PayOrderCommand;
 use Deliverea\CoffeeMachine\Order\Application\Command\PayOrderCommandHandler;
 use Deliverea\CoffeeMachine\Order\Domain\Exception\NotEnoughAmountToPayOrder;
 use Deliverea\CoffeeMachine\Order\Domain\Order;
-use Deliverea\CoffeeMachine\Order\Domain\OrderId;
+use Deliverea\CoffeeMachine\Shared\Domain\Order\OrderId;
 use Deliverea\CoffeeMachine\Order\Domain\OrderRepositoryInterface;
 use Deliverea\CoffeeMachine\Order\Infrastructure\InMemoryOrderRepository;
 use Deliverea\CoffeeMachine\Shared\Domain\EventBus\EventBusInterface;

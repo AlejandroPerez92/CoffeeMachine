@@ -9,6 +9,7 @@ use Deliverea\CoffeeMachine\Order\Domain\Exception\NotEnoughAmountToPayOrder;
 use Deliverea\CoffeeMachine\Shared\Domain\Aggregate\AggregateRoot;
 use Deliverea\CoffeeMachine\Shared\Domain\Money\Money;
 use Deliverea\CoffeeMachine\Shared\Domain\PositiveInteger\PositiveInteger;
+use Deliverea\CoffeeMachine\Shared\Domain\Order\OrderId;
 
 final class Order extends AggregateRoot
 {

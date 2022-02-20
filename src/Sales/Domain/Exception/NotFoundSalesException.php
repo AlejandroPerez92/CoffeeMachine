@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Deliverea\CoffeeMachine\Sales\Domain\Exception;
 
-use Deliverea\CoffeeMachine\Order\Domain\OrderId;
+use Deliverea\CoffeeMachine\Shared\Domain\Order\OrderId;
 
 final class NotFoundSalesException extends \LogicException
 {

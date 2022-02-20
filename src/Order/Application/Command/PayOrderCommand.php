@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Deliverea\CoffeeMachine\Order\Application\Command;
 
-use Deliverea\CoffeeMachine\Order\Domain\OrderId;
+use Deliverea\CoffeeMachine\Shared\Domain\Order\OrderId;
 
 final class PayOrderCommand
 {

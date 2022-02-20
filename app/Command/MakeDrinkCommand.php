@@ -8,7 +8,7 @@ use Deliverea\CoffeeMachine\Order\Application\Command\PayOrderCommand;
 use Deliverea\CoffeeMachine\Order\Domain\Exception\LimitUnitsException;
 use Deliverea\CoffeeMachine\Order\Domain\Exception\NotEnoughAmountToPayOrder;
 use Deliverea\CoffeeMachine\Order\Domain\Exception\NotFoundProductException;
-use Deliverea\CoffeeMachine\Order\Domain\OrderId;
+use Deliverea\CoffeeMachine\Shared\Domain\Order\OrderId;
 use Deliverea\CoffeeMachine\Order\Infrastructure\Ui\ConsoleQueryObject;
 use Deliverea\CoffeeMachine\Order\Infrastructure\Ui\ConsoleResponseFactory;
 use Deliverea\CoffeeMachine\Shared\Domain\PositiveInteger\NegativeValueException;

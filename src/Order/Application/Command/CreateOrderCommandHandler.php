@@ -4,10 +4,7 @@ declare(strict_types=1);
 namespace Deliverea\CoffeeMachine\Order\Application\Command;
 
 use Deliverea\CoffeeMachine\Order\Domain\Order;
-use Deliverea\CoffeeMachine\Order\Domain\OrderLine;
 use Deliverea\CoffeeMachine\Order\Domain\OrderRepositoryInterface;
-use Deliverea\CoffeeMachine\Order\Domain\ProductRepositoryInterface;
-use Deliverea\CoffeeMachine\Shared\Domain\PositiveInteger\PositiveInteger;
 
 final class CreateOrderCommandHandler
 {

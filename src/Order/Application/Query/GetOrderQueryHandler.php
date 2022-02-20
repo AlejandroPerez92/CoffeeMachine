@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Deliverea\CoffeeMachine\Order\Application\Query;
 
-use Deliverea\CoffeeMachine\Order\Domain\OrderId;
+use Deliverea\CoffeeMachine\Shared\Domain\Order\OrderId;
 use Deliverea\CoffeeMachine\Order\Domain\OrderRepositoryInterface;
 
 final class GetOrderQueryHandler

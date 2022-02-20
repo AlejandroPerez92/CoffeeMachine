@@ -5,7 +5,7 @@ namespace Deliverea\CoffeeMachine\Order\Infrastructure;
 
 use Deliverea\CoffeeMachine\Order\Domain\Exception\NotFoundOrderException;
 use Deliverea\CoffeeMachine\Order\Domain\Order;
-use Deliverea\CoffeeMachine\Order\Domain\OrderId;
+use Deliverea\CoffeeMachine\Shared\Domain\Order\OrderId;
 use Deliverea\CoffeeMachine\Order\Domain\OrderRepositoryInterface;
 
 final class InMemoryOrderRepository implements OrderRepositoryInterface

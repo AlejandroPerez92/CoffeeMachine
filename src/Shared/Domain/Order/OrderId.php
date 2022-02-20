@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Order\Domain;
+namespace Deliverea\CoffeeMachine\Shared\Domain\Order;
 
 use Deliverea\CoffeeMachine\Shared\Domain\Uuid\Uuid;
 

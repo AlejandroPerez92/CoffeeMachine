@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Deliverea\CoffeeMachine\Order\Application\Command;
 
 use Deliverea\CoffeeMachine\Order\Domain\Exception\PromotionNotFoundException;
-use Deliverea\CoffeeMachine\Order\Domain\OrderId;
+use Deliverea\CoffeeMachine\Shared\Domain\Order\OrderId;
 use Deliverea\CoffeeMachine\Order\Domain\OrderLine;
 use Deliverea\CoffeeMachine\Order\Domain\OrderRepositoryInterface;
 use Deliverea\CoffeeMachine\Order\Domain\ProductRepositoryInterface;

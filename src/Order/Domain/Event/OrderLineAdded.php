@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Deliverea\CoffeeMachine\Order\Domain\Event;
 
 use Deliverea\CoffeeMachine\Order\Domain\Order;
-use Deliverea\CoffeeMachine\Order\Domain\OrderId;
+use Deliverea\CoffeeMachine\Shared\Domain\Order\OrderId;
 use Deliverea\CoffeeMachine\Order\Domain\OrderLine;
 use Deliverea\CoffeeMachine\Shared\Domain\EventBus\DomainEvent;
 

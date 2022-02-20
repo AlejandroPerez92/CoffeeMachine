@@ -7,7 +7,7 @@ use Deliverea\CoffeeMachine\Order\Application\Command\CreateOrderLineCommand;
 use Deliverea\CoffeeMachine\Order\Application\Command\CreateOrderLineCommandHandler;
 use Deliverea\CoffeeMachine\Order\Domain\Exception\LimitUnitsException;
 use Deliverea\CoffeeMachine\Order\Domain\Order;
-use Deliverea\CoffeeMachine\Order\Domain\OrderId;
+use Deliverea\CoffeeMachine\Shared\Domain\Order\OrderId;
 use Deliverea\CoffeeMachine\Order\Domain\OrderRepositoryInterface;
 use Deliverea\CoffeeMachine\Order\Domain\ProductRepositoryInterface;
 use Deliverea\CoffeeMachine\Order\Domain\PromotionRepositoryInterface;
