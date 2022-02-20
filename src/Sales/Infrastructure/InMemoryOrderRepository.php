@@ -6,6 +6,7 @@ namespace Deliverea\CoffeeMachine\Sales\Infrastructure;
 use Deliverea\CoffeeMachine\Sales\Domain\Exception\NotFoundOrderException;
 use Deliverea\CoffeeMachine\Sales\Domain\Order;
 use Deliverea\CoffeeMachine\Sales\Domain\OrderRepositoryInterface;
+use Deliverea\CoffeeMachine\Shared\Domain\Order\OrderId;
 
 final class InMemoryOrderRepository implements OrderRepositoryInterface
 {
@@ -16,18 +17,18 @@ final class InMemoryOrderRepository implements OrderRepositoryInterface
         $this->data = $data;
     }
 
-    public function getOrderOrFail(string $orderId): Order
+    public function getOrderOrFail(OrderId $orderId): Order
     {
-        if (!isset($this->data[$orderId])) {
-            throw new NotFoundOrderException($orderId);
+        if (!isset($this->data[$orderId->value()])) {
+            throw new NotFoundOrderException($orderId->value());
         };
 
-        return $this->data[$orderId];
+        return $this->data[$orderId->value()];
     }
 
     public function save(Order $order): void
     {
-        $this->data[$order->id()] = $order;
+        $this->data[$order->id()->value()] = $order;
     }
 }
 

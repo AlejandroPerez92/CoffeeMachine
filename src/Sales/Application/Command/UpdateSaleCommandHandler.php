@@ -8,6 +8,7 @@ use Deliverea\CoffeeMachine\Sales\Domain\OrderLine;
 use Deliverea\CoffeeMachine\Sales\Domain\OrderRepositoryInterface;
 use Deliverea\CoffeeMachine\Sales\Domain\ProductSale;
 use Deliverea\CoffeeMachine\Sales\Domain\ProductSaleRepositoryInterface;
+use Deliverea\CoffeeMachine\Shared\Domain\Order\OrderId;
 
 final class UpdateSaleCommandHandler
 {
@@ -24,7 +25,7 @@ final class UpdateSaleCommandHandler
 
     public function handle(UpdateSaleCommand $command)
     {
-        $order = $this->orderRepository->getOrderOrFail($command->orderId());
+        $order = $this->orderRepository->getOrderOrFail(new OrderId($command->orderId()));
 
         if($order->paid()){
             return;

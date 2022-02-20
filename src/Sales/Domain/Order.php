@@ -3,13 +3,15 @@ declare(strict_types=1);
 
 namespace Deliverea\CoffeeMachine\Sales\Domain;
 
+use Deliverea\CoffeeMachine\Shared\Domain\Order\OrderId;
+
 final class Order
 {
-    private string $id;
+    private OrderId $id;
     private array $lines;
     private bool $paid;
 
-    public function __construct(string $id, array $lines, bool $paid)
+    public function __construct(OrderId $id, array $lines, bool $paid)
     {
         $this->id = $id;
         $this->lines = $lines;
@@ -21,7 +23,7 @@ final class Order
         $this->lines[] = $line;
     }
 
-    public function id(): string
+    public function id(): OrderId
     {
         return $this->id;
     }

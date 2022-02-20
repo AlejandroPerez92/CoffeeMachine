@@ -7,6 +7,7 @@ use Deliverea\CoffeeMachine\Sales\Domain\Exception\NotFoundOrderException;
 use Deliverea\CoffeeMachine\Sales\Domain\Order;
 use Deliverea\CoffeeMachine\Sales\Domain\OrderLine;
 use Deliverea\CoffeeMachine\Sales\Domain\OrderRepositoryInterface;
+use Deliverea\CoffeeMachine\Shared\Domain\Order\OrderId;
 
 final class UpdateOrderLinesCommandHandler
 {
@@ -20,9 +21,9 @@ final class UpdateOrderLinesCommandHandler
     public function handle(UpdateOrderLinesCommand $command): void
     {
         try{
-            $order = $this->orderRepository->getOrderOrFail($command->orderId());
+            $order = $this->orderRepository->getOrderOrFail(new OrderId($command->orderId()));
         }catch (NotFoundOrderException){
-            $order = new Order($command->orderId(),[],false);
+            $order = new Order(new OrderId($command->orderId()),[],false);
         }
         $order->addLine(new OrderLine($command->productName(),$command->total()));
         $this->orderRepository->save($order);

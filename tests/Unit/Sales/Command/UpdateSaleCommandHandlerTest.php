@@ -12,6 +12,7 @@ use Deliverea\CoffeeMachine\Sales\Domain\ProductSale;
 use Deliverea\CoffeeMachine\Sales\Domain\ProductSaleRepositoryInterface;
 use Deliverea\CoffeeMachine\Sales\Infrastructure\InMemoryOrderRepository;
 use Deliverea\CoffeeMachine\Sales\Infrastructure\InMemoryProductSaleRepository;
+use Deliverea\CoffeeMachine\Shared\Domain\Order\OrderId;
 use PHPUnit\Framework\TestCase;
 
 final class UpdateSaleCommandHandlerTest extends TestCase
@@ -32,9 +33,9 @@ final class UpdateSaleCommandHandlerTest extends TestCase
      */
     public function given_order_paid_when_handle_then_create_order_sale()
     {
-        $orderId = 'c772ed7a-0e47-4d29-ae5d-f25d1ca76ddf';
+        $orderId = new OrderId('c772ed7a-0e47-4d29-ae5d-f25d1ca76ddf');;
         $this->orderRepository->save(new Order($orderId, [new OrderLine('tea', 50)], false));
-        $this->commandHandler->handle(new UpdateSaleCommand($orderId));
+        $this->commandHandler->handle(new UpdateSaleCommand($orderId->value()));
         $productSale = $this->productSaleRepository->getByProductNameOrFail('tea');
         self::assertEquals(50, $productSale->total());
         $this->clearRepos();
@@ -45,9 +46,9 @@ final class UpdateSaleCommandHandlerTest extends TestCase
      */
     public function given_order_pending_when_handle_then_mark_order_as_paid()
     {
-        $orderId = 'c772ed7a-0e47-4d29-ae5d-f25d1ca76ddf';
+        $orderId = new OrderId('c772ed7a-0e47-4d29-ae5d-f25d1ca76ddf');;
         $this->orderRepository->save(new Order($orderId, [new OrderLine('tea', 50)], false));
-        $this->commandHandler->handle(new UpdateSaleCommand($orderId));
+        $this->commandHandler->handle(new UpdateSaleCommand($orderId->value()));
         $order = $this->orderRepository->getOrderOrFail($orderId);
         self::assertTrue($order->paid());
         $this->clearRepos();
@@ -58,10 +59,10 @@ final class UpdateSaleCommandHandlerTest extends TestCase
      */
     public function given_order_paid_when_handle_then_product_sale_not_increment()
     {
-        $orderId = 'c772ed7a-0e47-4d29-ae5d-f25d1ca76ddf';
+        $orderId = new OrderId('c772ed7a-0e47-4d29-ae5d-f25d1ca76ddf');;
         $this->orderRepository->save(new Order($orderId, [new OrderLine('tea', 50)], true));
         $this->productSaleRepository->save(new ProductSale('tea',50));
-        $this->commandHandler->handle(new UpdateSaleCommand($orderId));
+        $this->commandHandler->handle(new UpdateSaleCommand($orderId->value()));
         $productSale = $this->productSaleRepository->getByProductNameOrFail('tea');
         self::assertEquals(50, $productSale->total());
         $this->clearRepos();
