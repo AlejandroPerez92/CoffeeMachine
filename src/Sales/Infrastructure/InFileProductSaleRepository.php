@@ -49,11 +49,18 @@ final class InFileProductSaleRepository implements ProductSaleRepositoryInterfac
 
     private function loadData()
     {
-        $fileData = file_get_contents($this->fileRoute);
-        if(!$fileData){
+        try{
+            $fileData = file_get_contents($this->fileRoute);
+            $this->data = unserialize($fileData);
+        }catch (\Exception $e){
             $this->saveData();
             $this->data = [];
         }
-        $this->data = unserialize($fileData);
+
+//        if(!$fileData){
+//            $this->saveData();
+//            $this->data = [];
+//        }
+
     }
 }
