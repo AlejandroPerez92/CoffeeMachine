@@ -8,6 +8,7 @@ use Deliverea\CoffeeMachine\App\DependencyInjection\CompilerPass\SubscribersComp
 use League\Tactician\Bundle\TacticianBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\EventDispatcher\DependencyInjection\AddEventAliasesPass;
 use Symfony\Component\EventDispatcher\DependencyInjection\RegisterListenersPass;
 use Symfony\Component\HttpKernel\Kernel;

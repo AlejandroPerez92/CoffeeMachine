@@ -10,20 +10,25 @@ use Deliverea\CoffeeMachine\Order\Domain\Order;
 use Deliverea\CoffeeMachine\Order\Domain\OrderId;
 use Deliverea\CoffeeMachine\Order\Domain\OrderRepositoryInterface;
 use Deliverea\CoffeeMachine\Order\Infrastructure\InMemoryOrderRepository;
+use Deliverea\CoffeeMachine\Shared\Domain\EventBus\EventBusInterface;
 use Deliverea\CoffeeMachine\Shared\Domain\Money\Money;
+use Deliverea\CoffeeMachine\Shared\Infrastructure\Eventbus\EventBusWrapper;
+use Deliverea\CoffeeMachine\Tests\Unit\Utils\EventBusTest;
 use PHPUnit\Framework\TestCase;
 
 final class PayOrderLineCommandHandlerTest extends TestCase
 {
     private OrderRepositoryInterface $orderRepository;
     private PayOrderCommandHandler $handler;
+    private EventBusInterface $eventBus;
 
     protected function setUp(): void
     {
         parent::setUp();
         $this->orderRepository = new InMemoryOrderRepository();
         $this->clearOrderRepo();
-        $this->handler = new PayOrderCommandHandler($this->orderRepository);
+        $this->eventBus = new EventBusTest();
+        $this->handler = new PayOrderCommandHandler($this->orderRepository, $this->eventBus);
     }
 
     /**

@@ -42,6 +42,21 @@ services:
     tags:
       - { name: tactician.handler, command: Deliverea\CoffeeMachine\Order\Infrastructure\Ui\ConsoleQueryObject, bus: query }
 
+  deliverea.sales.order_update_handler:
+    class: Deliverea\CoffeeMachine\Sales\Application\Command\UpdateOrderLinesCommandHandler
+    tags:
+      - { name: tactician.handler, typehints: true, bus: default }
+
+  delivera.sales.product_sales_update_handler:
+    class: Deliverea\CoffeeMachine\Sales\Application\Command\UpdateSaleCommandHandler
+    tags:
+      - { name: tactician.handler, typehints: true, bus: default }
+
+  delivera.sales.product_sales_get_all_handler:
+    class: Deliverea\CoffeeMachine\Sales\Application\Query\GetAllProductSalesQueryHandler
+    tags:
+      - { name: tactician.handler, command: Deliverea\CoffeeMachine\Sales\Infrastructure\Ui\ConsoleGetAllProductSalesObject, bus: query }
+
   ### Subscribers
   delivera.sales.order.subscriber:
     class: Deliverea\CoffeeMachine\Sales\Infrastructure\OrderEventSubscriber
@@ -64,6 +79,18 @@ services:
     arguments:
       - '%promotions.map.fixtures%'
   Deliverea\CoffeeMachine\Order\Domain\PromotionRepositoryInterface: '@deliverea.promotion.in_memory_repository'
+
+  deliverea.sales.order.repository:
+    class: Deliverea\CoffeeMachine\Sales\Infrastructure\InMemoryOrderRepository
+
+  Deliverea\CoffeeMachine\Sales\Domain\OrderRepositoryInterface: '@deliverea.sales.order.repository'
+
+  deliverea.sales.product_sales.repository:
+    class: Deliverea\CoffeeMachine\Sales\Infrastructure\InFileProductSaleRepository
+    arguments:
+      - '%env(resolve:DATA_FILE)%'
+
+  Deliverea\CoffeeMachine\Sales\Domain\ProductSaleRepositoryInterface: '@deliverea.sales.product_sales.repository'
 
   ### Bus
   deliverea.event_bus:
