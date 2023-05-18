@@ -23,74 +23,74 @@ services:
     public: true
 
   alex-perez.order.create_handler:
-    class: AlexPerez\CoffeeMachine\Order\Application\Command\CreateOrderCommandHandler
+    class: AlexPerez\CoffeeMachine\Order\Order\Application\Command\CreateOrderCommandHandler
     tags:
       - { name: tactician.handler, typehints: true, bus: default }
 
   alex-perez.line.create_handler:
-    class: AlexPerez\CoffeeMachine\Order\Application\Command\CreateOrderLineCommandHandler
+    class: AlexPerez\CoffeeMachine\Order\Order\Application\Command\CreateOrderLineCommandHandler
     tags:
       - { name: tactician.handler, typehints: true, bus: default }
 
   alex-perez.order.pay_handler:
-    class: AlexPerez\CoffeeMachine\Order\Application\Command\PayOrderCommandHandler
+    class: AlexPerez\CoffeeMachine\Order\Order\Application\Command\PayOrderCommandHandler
     tags:
       - { name: tactician.handler, typehints: true, bus: default }
 
   alex-perez.order.query_handler:
-    class: AlexPerez\CoffeeMachine\Order\Application\Query\GetOrderQueryHandler
+    class: AlexPerez\CoffeeMachine\Order\Order\Application\Query\GetOrderQueryHandler
     tags:
-      - { name: tactician.handler, command: AlexPerez\CoffeeMachine\Order\Infrastructure\Ui\ConsoleQueryObject, bus: query }
+      - { name: tactician.handler, command: AlexPerez\CoffeeMachine\Order\Order\Infrastructure\Ui\ConsoleQueryObject, bus: query }
 
   alex-perez.sales.order_update_handler:
-    class: AlexPerez\CoffeeMachine\Sales\Application\Command\UpdateOrderLinesCommandHandler
+    class: AlexPerez\CoffeeMachine\Sales\ProductSales\Application\Command\UpdateOrderLinesCommandHandler
     tags:
       - { name: tactician.handler, typehints: true, bus: default }
 
   alex-perez.sales.product_sales_update_handler:
-    class: AlexPerez\CoffeeMachine\Sales\Application\Command\UpdateSaleCommandHandler
+    class: AlexPerez\CoffeeMachine\Sales\ProductSales\Application\Command\UpdateSaleCommandHandler
     tags:
       - { name: tactician.handler, typehints: true, bus: default }
 
   alex-perez.sales.product_sales_get_all_handler:
-    class: AlexPerez\CoffeeMachine\Sales\Application\Query\GetAllProductSalesQueryHandler
+    class: AlexPerez\CoffeeMachine\Sales\ProductSales\Application\Query\GetAllProductSalesQueryHandler
     tags:
-      - { name: tactician.handler, command: AlexPerez\CoffeeMachine\Sales\Infrastructure\Ui\ConsoleGetAllProductSalesObject, bus: query }
+      - { name: tactician.handler, command: AlexPerez\CoffeeMachine\Sales\ProductSales\Infrastructure\Ui\ConsoleGetAllProductSalesObject, bus: query }
 
   ### Subscribers
   alex-perez.sales.order.subscriber:
-    class: AlexPerez\CoffeeMachine\Sales\Infrastructure\OrderEventSubscriber
+    class: AlexPerez\CoffeeMachine\Sales\ProductSales\Infrastructure\OrderEventSubscriber
     tags:
       - { name: domain.event_subscriber }
 
   ### Repositories
   alex-perez.product.in_memory_repository:
-    class: AlexPerez\CoffeeMachine\Order\Infrastructure\InMemoryProductRepository
+    class: AlexPerez\CoffeeMachine\Order\Order\Infrastructure\InMemoryProductRepository
     alias:
     arguments:
       - '%products.map.fixtures%'
-  AlexPerez\CoffeeMachine\Order\Domain\ProductRepositoryInterface: '@alex-perez.product.in_memory_repository'
+  AlexPerez\CoffeeMachine\Order\Order\Domain\ProductRepositoryInterface: '@alex-perez.product.in_memory_repository'
   alex-perez.order.repository:
-    class: AlexPerez\CoffeeMachine\Order\Infrastructure\InMemoryOrderRepository
-  AlexPerez\CoffeeMachine\Order\Domain\OrderRepositoryInterface: '@alex-perez.order.repository'
+    class: AlexPerez\CoffeeMachine\Order\Order\Infrastructure\InMemoryOrderRepository
+  AlexPerez\CoffeeMachine\Order\Order\Domain\OrderRepositoryInterface: '@alex-perez.order.repository'
 
   alex-perez.promotion.in_memory_repository:
-    class: AlexPerez\CoffeeMachine\Order\Infrastructure\InMemoryPromotionRepository
+    class: AlexPerez\CoffeeMachine\Order\Order\Infrastructure\InMemoryPromotionRepository
     arguments:
       - '%promotions.map.fixtures%'
-  AlexPerez\CoffeeMachine\Order\Domain\PromotionRepositoryInterface: '@alex-perez.promotion.in_memory_repository'
+  AlexPerez\CoffeeMachine\Order\Order\Domain\PromotionRepositoryInterface: '@alex-perez.promotion.in_memory_repository'
 
   alex-perez.sales.order.repository:
-    class: AlexPerez\CoffeeMachine\Sales\Infrastructure\InMemoryOrderRepository
+    class: AlexPerez\CoffeeMachine\Sales\ProductSales\Infrastructure\InMemoryOrderRepository
 
-  AlexPerez\CoffeeMachine\Sales\Domain\OrderRepositoryInterface: '@alex-perez.sales.order.repository'
+  AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\OrderRepositoryInterface: '@alex-perez.sales.order.repository'
 
   alex-perez.sales.product_sales.repository:
-    class: AlexPerez\CoffeeMachine\Sales\Infrastructure\InFileProductSaleRepository
+    class: AlexPerez\CoffeeMachine\Sales\ProductSales\Infrastructure\InFileProductSaleRepository
     arguments:
       - '%env(resolve:DATA_FILE)%'
 
-  AlexPerez\CoffeeMachine\Sales\Domain\ProductSaleRepositoryInterface: '@alex-perez.sales.product_sales.repository'
+  AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\ProductSaleRepositoryInterface: '@alex-perez.sales.product_sales.repository'
 
   ### Bus
   alex-perez.event_bus:

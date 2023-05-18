@@ -2,15 +2,15 @@
 
 namespace AlexPerez\CoffeeMachine\App\Command;
 
-use AlexPerez\CoffeeMachine\Order\Application\Command\CreateOrderCommand;
-use AlexPerez\CoffeeMachine\Order\Application\Command\CreateOrderLineCommand;
-use AlexPerez\CoffeeMachine\Order\Application\Command\PayOrderCommand;
-use AlexPerez\CoffeeMachine\Order\Domain\Exception\LimitUnitsException;
-use AlexPerez\CoffeeMachine\Order\Domain\Exception\NotEnoughAmountToPayOrder;
-use AlexPerez\CoffeeMachine\Order\Domain\Exception\NotFoundProductException;
+use AlexPerez\CoffeeMachine\Order\Order\Application\Command\CreateOrderCommand;
+use AlexPerez\CoffeeMachine\Order\Order\Application\Command\CreateOrderLineCommand;
+use AlexPerez\CoffeeMachine\Order\Order\Application\Command\PayOrderCommand;
+use AlexPerez\CoffeeMachine\Order\Order\Domain\Exception\LimitUnitsException;
+use AlexPerez\CoffeeMachine\Order\Order\Domain\Exception\NotEnoughAmountToPayOrder;
+use AlexPerez\CoffeeMachine\Order\Order\Domain\Exception\NotFoundProductException;
 use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
-use AlexPerez\CoffeeMachine\Order\Infrastructure\Ui\ConsoleQueryObject;
-use AlexPerez\CoffeeMachine\Order\Infrastructure\Ui\ConsoleResponseFactory;
+use AlexPerez\CoffeeMachine\Order\Order\Infrastructure\Ui\ConsoleQueryObject;
+use AlexPerez\CoffeeMachine\Order\Order\Infrastructure\Ui\ConsoleResponseFactory;
 use AlexPerez\CoffeeMachine\Shared\Domain\PositiveInteger\NegativeValueException;
 use League\Tactician\CommandBus;
 use Symfony\Component\Console\Command\Command;

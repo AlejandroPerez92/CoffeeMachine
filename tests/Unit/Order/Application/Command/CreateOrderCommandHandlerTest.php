@@ -3,11 +3,11 @@ declare(strict_types=1);
 
 namespace AlexPerez\CoffeeMachine\Tests\Unit\Order\Application\Command;
 
-use AlexPerez\CoffeeMachine\Order\Application\Command\CreateOrderCommand;
-use AlexPerez\CoffeeMachine\Order\Application\Command\CreateOrderCommandHandler;
+use AlexPerez\CoffeeMachine\Order\Order\Application\Command\CreateOrderCommand;
+use AlexPerez\CoffeeMachine\Order\Order\Application\Command\CreateOrderCommandHandler;
 use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
-use AlexPerez\CoffeeMachine\Order\Domain\OrderRepositoryInterface;
-use AlexPerez\CoffeeMachine\Order\Infrastructure\InMemoryOrderRepository;
+use AlexPerez\CoffeeMachine\Order\Order\Domain\OrderRepositoryInterface;
+use AlexPerez\CoffeeMachine\Order\Order\Infrastructure\InMemoryOrderRepository;
 use PHPUnit\Framework\TestCase;
 
 final class CreateOrderCommandHandlerTest extends TestCase

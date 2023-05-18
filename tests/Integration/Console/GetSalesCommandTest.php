@@ -2,7 +2,7 @@
 
 namespace AlexPerez\CoffeeMachine\Tests\Integration\Console;
 
-use AlexPerez\CoffeeMachine\Sales\Domain\ProductSale;
+use AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\ProductSale;
 use AlexPerez\CoffeeMachine\Tests\Integration\IntegrationTestCase;
 use Symfony\Component\Console\Tester\CommandTester;
 

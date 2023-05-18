@@ -3,13 +3,13 @@ declare(strict_types=1);
 
 namespace AlexPerez\CoffeeMachine\Tests\Unit\Order\Application\Command;
 
-use AlexPerez\CoffeeMachine\Order\Application\Command\PayOrderCommand;
-use AlexPerez\CoffeeMachine\Order\Application\Command\PayOrderCommandHandler;
-use AlexPerez\CoffeeMachine\Order\Domain\Exception\NotEnoughAmountToPayOrder;
-use AlexPerez\CoffeeMachine\Order\Domain\Order;
+use AlexPerez\CoffeeMachine\Order\Order\Application\Command\PayOrderCommand;
+use AlexPerez\CoffeeMachine\Order\Order\Application\Command\PayOrderCommandHandler;
+use AlexPerez\CoffeeMachine\Order\Order\Domain\Exception\NotEnoughAmountToPayOrder;
+use AlexPerez\CoffeeMachine\Order\Order\Domain\Order;
 use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
-use AlexPerez\CoffeeMachine\Order\Domain\OrderRepositoryInterface;
-use AlexPerez\CoffeeMachine\Order\Infrastructure\InMemoryOrderRepository;
+use AlexPerez\CoffeeMachine\Order\Order\Domain\OrderRepositoryInterface;
+use AlexPerez\CoffeeMachine\Order\Order\Infrastructure\InMemoryOrderRepository;
 use AlexPerez\CoffeeMachine\Shared\Domain\EventBus\EventBusInterface;
 use AlexPerez\CoffeeMachine\Shared\Domain\Money\Money;
 use AlexPerez\CoffeeMachine\Shared\Infrastructure\Eventbus\EventBusWrapper;

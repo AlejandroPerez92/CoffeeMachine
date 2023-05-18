@@ -3,15 +3,15 @@ declare(strict_types=1);
 
 namespace AlexPerez\CoffeeMachine\Tests\Unit\Sales\Command;
 
-use AlexPerez\CoffeeMachine\Sales\Application\Command\UpdateSaleCommand;
-use AlexPerez\CoffeeMachine\Sales\Domain\OrderLine;
-use AlexPerez\CoffeeMachine\Sales\Application\Command\UpdateSaleCommandHandler;
-use AlexPerez\CoffeeMachine\Sales\Domain\Order;
-use AlexPerez\CoffeeMachine\Sales\Domain\OrderRepositoryInterface;
-use AlexPerez\CoffeeMachine\Sales\Domain\ProductSale;
-use AlexPerez\CoffeeMachine\Sales\Domain\ProductSaleRepositoryInterface;
-use AlexPerez\CoffeeMachine\Sales\Infrastructure\InMemoryOrderRepository;
-use AlexPerez\CoffeeMachine\Sales\Infrastructure\InMemoryProductSaleRepository;
+use AlexPerez\CoffeeMachine\Sales\ProductSales\Application\Command\UpdateSaleCommand;
+use AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\OrderLine;
+use AlexPerez\CoffeeMachine\Sales\ProductSales\Application\Command\UpdateSaleCommandHandler;
+use AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\Order;
+use AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\OrderRepositoryInterface;
+use AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\ProductSale;
+use AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\ProductSaleRepositoryInterface;
+use AlexPerez\CoffeeMachine\Sales\ProductSales\Infrastructure\InMemoryOrderRepository;
+use AlexPerez\CoffeeMachine\Sales\ProductSales\Infrastructure\InMemoryProductSaleRepository;
 use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
 use PHPUnit\Framework\TestCase;
 

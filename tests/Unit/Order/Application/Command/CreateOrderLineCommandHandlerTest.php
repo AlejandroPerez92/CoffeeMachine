@@ -3,17 +3,17 @@ declare(strict_types=1);
 
 namespace AlexPerez\CoffeeMachine\Tests\Unit\Order\Application\Command;
 
-use AlexPerez\CoffeeMachine\Order\Application\Command\CreateOrderLineCommand;
-use AlexPerez\CoffeeMachine\Order\Application\Command\CreateOrderLineCommandHandler;
-use AlexPerez\CoffeeMachine\Order\Domain\Exception\LimitUnitsException;
-use AlexPerez\CoffeeMachine\Order\Domain\Order;
+use AlexPerez\CoffeeMachine\Order\Order\Application\Command\CreateOrderLineCommand;
+use AlexPerez\CoffeeMachine\Order\Order\Application\Command\CreateOrderLineCommandHandler;
+use AlexPerez\CoffeeMachine\Order\Order\Domain\Exception\LimitUnitsException;
+use AlexPerez\CoffeeMachine\Order\Order\Domain\Order;
 use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
-use AlexPerez\CoffeeMachine\Order\Domain\OrderRepositoryInterface;
-use AlexPerez\CoffeeMachine\Order\Domain\ProductRepositoryInterface;
-use AlexPerez\CoffeeMachine\Order\Domain\PromotionRepositoryInterface;
-use AlexPerez\CoffeeMachine\Order\Infrastructure\InMemoryOrderRepository;
-use AlexPerez\CoffeeMachine\Order\Infrastructure\InMemoryProductRepository;
-use AlexPerez\CoffeeMachine\Order\Infrastructure\InMemoryPromotionRepository;
+use AlexPerez\CoffeeMachine\Order\Order\Domain\OrderRepositoryInterface;
+use AlexPerez\CoffeeMachine\Order\Order\Domain\ProductRepositoryInterface;
+use AlexPerez\CoffeeMachine\Order\Order\Domain\PromotionRepositoryInterface;
+use AlexPerez\CoffeeMachine\Order\Order\Infrastructure\InMemoryOrderRepository;
+use AlexPerez\CoffeeMachine\Order\Order\Infrastructure\InMemoryProductRepository;
+use AlexPerez\CoffeeMachine\Order\Order\Infrastructure\InMemoryPromotionRepository;
 use AlexPerez\CoffeeMachine\Shared\Domain\EventBus\EventBusInterface;
 use AlexPerez\CoffeeMachine\Shared\Domain\Money\Money;
 use AlexPerez\CoffeeMachine\Tests\Unit\Utils\EventBusTest;

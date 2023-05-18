@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace AlexPerez\CoffeeMachine\App\Command;
 
-use AlexPerez\CoffeeMachine\Sales\Infrastructure\Ui\ConsoleGetAllProductSalesObject;
+use AlexPerez\CoffeeMachine\Sales\ProductSales\Infrastructure\Ui\ConsoleGetAllProductSalesObject;
 use League\Tactician\CommandBus;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
