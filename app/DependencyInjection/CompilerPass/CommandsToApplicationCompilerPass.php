@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\App\DependencyInjection\CompilerPass;
+namespace AlexPerez\CoffeeMachine\App\DependencyInjection\CompilerPass;
 
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Command\Command;

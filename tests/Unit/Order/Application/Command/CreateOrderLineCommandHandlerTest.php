@@ -1,22 +1,22 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Tests\Unit\Order\Application\Command;
+namespace AlexPerez\CoffeeMachine\Tests\Unit\Order\Application\Command;
 
-use Deliverea\CoffeeMachine\Order\Application\Command\CreateOrderLineCommand;
-use Deliverea\CoffeeMachine\Order\Application\Command\CreateOrderLineCommandHandler;
-use Deliverea\CoffeeMachine\Order\Domain\Exception\LimitUnitsException;
-use Deliverea\CoffeeMachine\Order\Domain\Order;
-use Deliverea\CoffeeMachine\Shared\Domain\Order\OrderId;
-use Deliverea\CoffeeMachine\Order\Domain\OrderRepositoryInterface;
-use Deliverea\CoffeeMachine\Order\Domain\ProductRepositoryInterface;
-use Deliverea\CoffeeMachine\Order\Domain\PromotionRepositoryInterface;
-use Deliverea\CoffeeMachine\Order\Infrastructure\InMemoryOrderRepository;
-use Deliverea\CoffeeMachine\Order\Infrastructure\InMemoryProductRepository;
-use Deliverea\CoffeeMachine\Order\Infrastructure\InMemoryPromotionRepository;
-use Deliverea\CoffeeMachine\Shared\Domain\EventBus\EventBusInterface;
-use Deliverea\CoffeeMachine\Shared\Domain\Money\Money;
-use Deliverea\CoffeeMachine\Tests\Unit\Utils\EventBusTest;
+use AlexPerez\CoffeeMachine\Order\Application\Command\CreateOrderLineCommand;
+use AlexPerez\CoffeeMachine\Order\Application\Command\CreateOrderLineCommandHandler;
+use AlexPerez\CoffeeMachine\Order\Domain\Exception\LimitUnitsException;
+use AlexPerez\CoffeeMachine\Order\Domain\Order;
+use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
+use AlexPerez\CoffeeMachine\Order\Domain\OrderRepositoryInterface;
+use AlexPerez\CoffeeMachine\Order\Domain\ProductRepositoryInterface;
+use AlexPerez\CoffeeMachine\Order\Domain\PromotionRepositoryInterface;
+use AlexPerez\CoffeeMachine\Order\Infrastructure\InMemoryOrderRepository;
+use AlexPerez\CoffeeMachine\Order\Infrastructure\InMemoryProductRepository;
+use AlexPerez\CoffeeMachine\Order\Infrastructure\InMemoryPromotionRepository;
+use AlexPerez\CoffeeMachine\Shared\Domain\EventBus\EventBusInterface;
+use AlexPerez\CoffeeMachine\Shared\Domain\Money\Money;
+use AlexPerez\CoffeeMachine\Tests\Unit\Utils\EventBusTest;
 use PHPUnit\Framework\TestCase;
 
 final class CreateOrderLineCommandHandlerTest extends TestCase

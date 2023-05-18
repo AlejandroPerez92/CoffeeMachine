@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Sales\Infrastructure\Ui;
+namespace AlexPerez\CoffeeMachine\Sales\Infrastructure\Ui;
 
-use Deliverea\CoffeeMachine\Sales\Application\Query\GetAllProductSalesQueryObjectInterface;
-use Deliverea\CoffeeMachine\Sales\Domain\ProductSale;
+use AlexPerez\CoffeeMachine\Sales\Application\Query\GetAllProductSalesQueryObjectInterface;
+use AlexPerez\CoffeeMachine\Sales\Domain\ProductSale;
 
 final class ConsoleGetAllProductSalesObject implements GetAllProductSalesQueryObjectInterface
 {

@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Order\Application\Command;
+namespace AlexPerez\CoffeeMachine\Order\Application\Command;
 
-use Deliverea\CoffeeMachine\Order\Domain\Exception\PromotionNotFoundException;
-use Deliverea\CoffeeMachine\Shared\Domain\Order\OrderId;
-use Deliverea\CoffeeMachine\Order\Domain\OrderLine;
-use Deliverea\CoffeeMachine\Order\Domain\OrderRepositoryInterface;
-use Deliverea\CoffeeMachine\Order\Domain\ProductRepositoryInterface;
-use Deliverea\CoffeeMachine\Order\Domain\PromotionRepositoryInterface;
-use Deliverea\CoffeeMachine\Shared\Domain\EventBus\EventBusInterface;
-use Deliverea\CoffeeMachine\Shared\Domain\PositiveInteger\PositiveInteger;
+use AlexPerez\CoffeeMachine\Order\Domain\Exception\PromotionNotFoundException;
+use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
+use AlexPerez\CoffeeMachine\Order\Domain\OrderLine;
+use AlexPerez\CoffeeMachine\Order\Domain\OrderRepositoryInterface;
+use AlexPerez\CoffeeMachine\Order\Domain\ProductRepositoryInterface;
+use AlexPerez\CoffeeMachine\Order\Domain\PromotionRepositoryInterface;
+use AlexPerez\CoffeeMachine\Shared\Domain\EventBus\EventBusInterface;
+use AlexPerez\CoffeeMachine\Shared\Domain\PositiveInteger\PositiveInteger;
 
 final class CreateOrderLineCommandHandler
 {

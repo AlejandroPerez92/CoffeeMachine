@@ -14,10 +14,10 @@
     },
     "autoload": {
         "psr-4": {
-            "Deliverea\\CoffeeMachine\\": "src",
-            "Deliverea\\CoffeeMachine\\Tests\\Unit\\": "tests/Unit",
-            "Deliverea\\CoffeeMachine\\Tests\\Integration\\": "tests/Integration",
-            "Deliverea\\CoffeeMachine\\App\\": "app"
+            "AlexPerez\\CoffeeMachine\\": "src",
+            "AlexPerez\\CoffeeMachine\\Tests\\Unit\\": "tests/Unit",
+            "AlexPerez\\CoffeeMachine\\Tests\\Integration\\": "tests/Integration",
+            "AlexPerez\\CoffeeMachine\\App\\": "app"
         }
     }
 }

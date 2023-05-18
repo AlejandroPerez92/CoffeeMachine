@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Sales\Application\Command;
+namespace AlexPerez\CoffeeMachine\Sales\Application\Command;
 
-use Deliverea\CoffeeMachine\Sales\Domain\Exception\NotFoundSalesException;
-use Deliverea\CoffeeMachine\Sales\Domain\OrderLine;
-use Deliverea\CoffeeMachine\Sales\Domain\OrderRepositoryInterface;
-use Deliverea\CoffeeMachine\Sales\Domain\ProductSale;
-use Deliverea\CoffeeMachine\Sales\Domain\ProductSaleRepositoryInterface;
-use Deliverea\CoffeeMachine\Shared\Domain\Order\OrderId;
+use AlexPerez\CoffeeMachine\Sales\Domain\Exception\NotFoundSalesException;
+use AlexPerez\CoffeeMachine\Sales\Domain\OrderLine;
+use AlexPerez\CoffeeMachine\Sales\Domain\OrderRepositoryInterface;
+use AlexPerez\CoffeeMachine\Sales\Domain\ProductSale;
+use AlexPerez\CoffeeMachine\Sales\Domain\ProductSaleRepositoryInterface;
+use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
 
 final class UpdateSaleCommandHandler
 {

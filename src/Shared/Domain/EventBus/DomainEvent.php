@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Shared\Domain\EventBus;
+namespace AlexPerez\CoffeeMachine\Shared\Domain\EventBus;
 
-use Deliverea\CoffeeMachine\Shared\Domain\Uuid\Uuid;
+use AlexPerez\CoffeeMachine\Shared\Domain\Uuid\Uuid;
 
 abstract class DomainEvent
 {

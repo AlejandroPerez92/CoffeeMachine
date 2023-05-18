@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Shared\Domain\Uuid;
+namespace AlexPerez\CoffeeMachine\Shared\Domain\Uuid;
 
 final class NotValidUuidException extends \LogicException
 {

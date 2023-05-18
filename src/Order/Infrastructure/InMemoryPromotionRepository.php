@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Order\Infrastructure;
+namespace AlexPerez\CoffeeMachine\Order\Infrastructure;
 
-use Deliverea\CoffeeMachine\Order\Domain\Exception\PromotionNotFoundException;
-use Deliverea\CoffeeMachine\Order\Domain\Promotion;
-use Deliverea\CoffeeMachine\Order\Domain\PromotionRepositoryInterface;
-use Deliverea\CoffeeMachine\Shared\Domain\PositiveInteger\PositiveInteger;
+use AlexPerez\CoffeeMachine\Order\Domain\Exception\PromotionNotFoundException;
+use AlexPerez\CoffeeMachine\Order\Domain\Promotion;
+use AlexPerez\CoffeeMachine\Order\Domain\PromotionRepositoryInterface;
+use AlexPerez\CoffeeMachine\Shared\Domain\PositiveInteger\PositiveInteger;
 
 final class InMemoryPromotionRepository implements PromotionRepositoryInterface
 {

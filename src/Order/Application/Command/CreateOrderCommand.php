@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Order\Application\Command;
+namespace AlexPerez\CoffeeMachine\Order\Application\Command;
 
-use Deliverea\CoffeeMachine\Shared\Domain\Order\OrderId;
+use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
 
 final class CreateOrderCommand
 {

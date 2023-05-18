@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Order\Application\Command;
+namespace AlexPerez\CoffeeMachine\Order\Application\Command;
 
-use Deliverea\CoffeeMachine\Order\Domain\OrderRepositoryInterface;
-use Deliverea\CoffeeMachine\Shared\Domain\EventBus\EventBusInterface;
-use Deliverea\CoffeeMachine\Shared\Domain\Money\Money;
+use AlexPerez\CoffeeMachine\Order\Domain\OrderRepositoryInterface;
+use AlexPerez\CoffeeMachine\Shared\Domain\EventBus\EventBusInterface;
+use AlexPerez\CoffeeMachine\Shared\Domain\Money\Money;
 
 final class PayOrderCommandHandler
 {

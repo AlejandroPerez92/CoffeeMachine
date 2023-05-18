@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Order\Domain;
+namespace AlexPerez\CoffeeMachine\Order\Domain;
 
-use Deliverea\CoffeeMachine\Shared\Domain\Money\Money;
-use Deliverea\CoffeeMachine\Shared\Domain\PositiveInteger\PositiveInteger;
+use AlexPerez\CoffeeMachine\Shared\Domain\Money\Money;
+use AlexPerez\CoffeeMachine\Shared\Domain\PositiveInteger\PositiveInteger;
 
 final class Product
 {

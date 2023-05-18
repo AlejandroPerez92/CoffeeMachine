@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Sales\Infrastructure;
+namespace AlexPerez\CoffeeMachine\Sales\Infrastructure;
 
-use Deliverea\CoffeeMachine\Sales\Application\Command\UpdateOrderLinesCommand;
-use Deliverea\CoffeeMachine\Sales\Application\Command\UpdateSaleCommand;
-use Deliverea\CoffeeMachine\Shared\Domain\EventBus\DomainEvent;
+use AlexPerez\CoffeeMachine\Sales\Application\Command\UpdateOrderLinesCommand;
+use AlexPerez\CoffeeMachine\Sales\Application\Command\UpdateSaleCommand;
+use AlexPerez\CoffeeMachine\Shared\Domain\EventBus\DomainEvent;
 use League\Tactician\CommandBus;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 

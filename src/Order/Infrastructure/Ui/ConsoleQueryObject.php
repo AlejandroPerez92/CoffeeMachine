@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Order\Infrastructure\Ui;
+namespace AlexPerez\CoffeeMachine\Order\Infrastructure\Ui;
 
-use Deliverea\CoffeeMachine\Order\Application\Query\GetOrderQueryObjectInterface;
-use Deliverea\CoffeeMachine\Order\Domain\Order;
-use Deliverea\CoffeeMachine\Order\Domain\OrderLine;
+use AlexPerez\CoffeeMachine\Order\Application\Query\GetOrderQueryObjectInterface;
+use AlexPerez\CoffeeMachine\Order\Domain\Order;
+use AlexPerez\CoffeeMachine\Order\Domain\OrderLine;
 
 final class ConsoleQueryObject implements GetOrderQueryObjectInterface
 {

@@ -1,7 +1,7 @@
 <?php
 
-namespace Deliverea\CoffeeMachine\Order\Domain;
-use Deliverea\CoffeeMachine\Shared\Domain\Order\OrderId;
+namespace AlexPerez\CoffeeMachine\Order\Domain;
+use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
 
 interface OrderRepositoryInterface
 {

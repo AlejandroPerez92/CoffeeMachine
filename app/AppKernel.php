@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\App;
+namespace AlexPerez\CoffeeMachine\App;
 
-use Deliverea\CoffeeMachine\App\DependencyInjection\CompilerPass\CommandsToApplicationCompilerPass;
-use Deliverea\CoffeeMachine\App\DependencyInjection\CompilerPass\SubscribersCompilerPass;
+use AlexPerez\CoffeeMachine\App\DependencyInjection\CompilerPass\CommandsToApplicationCompilerPass;
+use AlexPerez\CoffeeMachine\App\DependencyInjection\CompilerPass\SubscribersCompilerPass;
 use League\Tactician\Bundle\TacticianBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

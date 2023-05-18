@@ -1,6 +1,6 @@
 <?php
 
-namespace Deliverea\CoffeeMachine\Sales\Domain;
+namespace AlexPerez\CoffeeMachine\Sales\Domain;
 
 interface ProductSaleRepositoryInterface
 {

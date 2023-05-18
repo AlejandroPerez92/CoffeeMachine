@@ -1,19 +1,19 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Tests\Unit\Order\Application\Command;
+namespace AlexPerez\CoffeeMachine\Tests\Unit\Order\Application\Command;
 
-use Deliverea\CoffeeMachine\Order\Application\Command\PayOrderCommand;
-use Deliverea\CoffeeMachine\Order\Application\Command\PayOrderCommandHandler;
-use Deliverea\CoffeeMachine\Order\Domain\Exception\NotEnoughAmountToPayOrder;
-use Deliverea\CoffeeMachine\Order\Domain\Order;
-use Deliverea\CoffeeMachine\Shared\Domain\Order\OrderId;
-use Deliverea\CoffeeMachine\Order\Domain\OrderRepositoryInterface;
-use Deliverea\CoffeeMachine\Order\Infrastructure\InMemoryOrderRepository;
-use Deliverea\CoffeeMachine\Shared\Domain\EventBus\EventBusInterface;
-use Deliverea\CoffeeMachine\Shared\Domain\Money\Money;
-use Deliverea\CoffeeMachine\Shared\Infrastructure\Eventbus\EventBusWrapper;
-use Deliverea\CoffeeMachine\Tests\Unit\Utils\EventBusTest;
+use AlexPerez\CoffeeMachine\Order\Application\Command\PayOrderCommand;
+use AlexPerez\CoffeeMachine\Order\Application\Command\PayOrderCommandHandler;
+use AlexPerez\CoffeeMachine\Order\Domain\Exception\NotEnoughAmountToPayOrder;
+use AlexPerez\CoffeeMachine\Order\Domain\Order;
+use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
+use AlexPerez\CoffeeMachine\Order\Domain\OrderRepositoryInterface;
+use AlexPerez\CoffeeMachine\Order\Infrastructure\InMemoryOrderRepository;
+use AlexPerez\CoffeeMachine\Shared\Domain\EventBus\EventBusInterface;
+use AlexPerez\CoffeeMachine\Shared\Domain\Money\Money;
+use AlexPerez\CoffeeMachine\Shared\Infrastructure\Eventbus\EventBusWrapper;
+use AlexPerez\CoffeeMachine\Tests\Unit\Utils\EventBusTest;
 use PHPUnit\Framework\TestCase;
 
 final class PayOrderLineCommandHandlerTest extends TestCase

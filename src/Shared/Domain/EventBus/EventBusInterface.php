@@ -1,6 +1,6 @@
 <?php
 
-namespace Deliverea\CoffeeMachine\Shared\Domain\EventBus;
+namespace AlexPerez\CoffeeMachine\Shared\Domain\EventBus;
 
 interface EventBusInterface
 {

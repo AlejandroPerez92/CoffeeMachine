@@ -1,8 +1,8 @@
 <?php
 
-namespace Deliverea\CoffeeMachine\Tests\Integration;
+namespace AlexPerez\CoffeeMachine\Tests\Integration;
 
-use Deliverea\CoffeeMachine\App\AppKernel;
+use AlexPerez\CoffeeMachine\App\AppKernel;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Dotenv\Dotenv;

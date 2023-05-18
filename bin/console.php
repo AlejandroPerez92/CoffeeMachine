@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use Deliverea\CoffeeMachine\App\AppKernel;
+use AlexPerez\CoffeeMachine\App\AppKernel;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Dotenv\Dotenv;
 

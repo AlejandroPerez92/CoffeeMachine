@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Sales\Application\Command;
+namespace AlexPerez\CoffeeMachine\Sales\Application\Command;
 
 final class UpdateOrderLinesCommand
 {

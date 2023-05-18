@@ -1,9 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Sales\Domain\Exception;
-
-use Deliverea\CoffeeMachine\Shared\Domain\Order\OrderId;
+namespace AlexPerez\CoffeeMachine\Sales\Domain\Exception;
 
 final class NotFoundOrderException extends \LogicException
 {

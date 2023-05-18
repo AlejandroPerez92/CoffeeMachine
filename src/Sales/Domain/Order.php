@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Sales\Domain;
+namespace AlexPerez\CoffeeMachine\Sales\Domain;
 
-use Deliverea\CoffeeMachine\Shared\Domain\Order\OrderId;
+use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
 
 final class Order
 {
@@ -18,7 +18,7 @@ final class Order
         $this->paid = $paid;
     }
 
-    public function addLine(OrderLine $line)
+    public function addLine(OrderLine $line): void
     {
         $this->lines[] = $line;
     }

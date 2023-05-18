@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Sales\Infrastructure;
+namespace AlexPerez\CoffeeMachine\Sales\Infrastructure;
 
-use Deliverea\CoffeeMachine\Sales\Domain\Exception\NotFoundSalesException;
-use Deliverea\CoffeeMachine\Sales\Domain\ProductSale;
-use Deliverea\CoffeeMachine\Sales\Domain\ProductSaleRepositoryInterface;
+use AlexPerez\CoffeeMachine\Sales\Domain\Exception\NotFoundSalesException;
+use AlexPerez\CoffeeMachine\Sales\Domain\ProductSale;
+use AlexPerez\CoffeeMachine\Sales\Domain\ProductSaleRepositoryInterface;
 
 final class InMemoryProductSaleRepository implements ProductSaleRepositoryInterface
 {

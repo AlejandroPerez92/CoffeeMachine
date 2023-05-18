@@ -1,8 +1,8 @@
 <?php
 
-namespace Deliverea\CoffeeMachine\Tests\Integration\Console;
+namespace AlexPerez\CoffeeMachine\Tests\Integration\Console;
 
-use Deliverea\CoffeeMachine\Tests\Integration\IntegrationTestCase;
+use AlexPerez\CoffeeMachine\Tests\Integration\IntegrationTestCase;
 use Symfony\Component\Console\Tester\CommandTester;
 
 class MakeDrinkCommandTest extends IntegrationTestCase

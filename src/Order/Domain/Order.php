@@ -1,15 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Order\Domain;
+namespace AlexPerez\CoffeeMachine\Order\Domain;
 
-use Deliverea\CoffeeMachine\Order\Domain\Event\OrderLineAdded;
-use Deliverea\CoffeeMachine\Order\Domain\Event\OrderPaid;
-use Deliverea\CoffeeMachine\Order\Domain\Exception\NotEnoughAmountToPayOrder;
-use Deliverea\CoffeeMachine\Shared\Domain\Aggregate\AggregateRoot;
-use Deliverea\CoffeeMachine\Shared\Domain\Money\Money;
-use Deliverea\CoffeeMachine\Shared\Domain\PositiveInteger\PositiveInteger;
-use Deliverea\CoffeeMachine\Shared\Domain\Order\OrderId;
+use AlexPerez\CoffeeMachine\Order\Domain\Event\OrderLineAdded;
+use AlexPerez\CoffeeMachine\Order\Domain\Event\OrderPaid;
+use AlexPerez\CoffeeMachine\Order\Domain\Exception\NotEnoughAmountToPayOrder;
+use AlexPerez\CoffeeMachine\Shared\Domain\Aggregate\AggregateRoot;
+use AlexPerez\CoffeeMachine\Shared\Domain\Money\Money;
+use AlexPerez\CoffeeMachine\Shared\Domain\PositiveInteger\PositiveInteger;
+use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
 
 final class Order extends AggregateRoot
 {

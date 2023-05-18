@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Order\Infrastructure;
+namespace AlexPerez\CoffeeMachine\Order\Infrastructure;
 
-use Deliverea\CoffeeMachine\Order\Domain\Exception\NotFoundProductException;
-use Deliverea\CoffeeMachine\Order\Domain\Product;
-use Deliverea\CoffeeMachine\Order\Domain\ProductRepositoryInterface;
-use Deliverea\CoffeeMachine\Shared\Domain\Money\Money;
-use Deliverea\CoffeeMachine\Shared\Domain\PositiveInteger\PositiveInteger;
+use AlexPerez\CoffeeMachine\Order\Domain\Exception\NotFoundProductException;
+use AlexPerez\CoffeeMachine\Order\Domain\Product;
+use AlexPerez\CoffeeMachine\Order\Domain\ProductRepositoryInterface;
+use AlexPerez\CoffeeMachine\Shared\Domain\Money\Money;
+use AlexPerez\CoffeeMachine\Shared\Domain\PositiveInteger\PositiveInteger;
 
 final class InMemoryProductRepository implements ProductRepositoryInterface
 {

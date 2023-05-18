@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Order\Domain\Event;
+namespace AlexPerez\CoffeeMachine\Order\Domain\Event;
 
-use Deliverea\CoffeeMachine\Order\Domain\Order;
-use Deliverea\CoffeeMachine\Shared\Domain\EventBus\DomainEvent;
+use AlexPerez\CoffeeMachine\Order\Domain\Order;
+use AlexPerez\CoffeeMachine\Shared\Domain\EventBus\DomainEvent;
 
 final class OrderPaid extends DomainEvent
 {

@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Order\Infrastructure;
+namespace AlexPerez\CoffeeMachine\Order\Infrastructure;
 
-use Deliverea\CoffeeMachine\Order\Domain\Exception\NotFoundOrderException;
-use Deliverea\CoffeeMachine\Order\Domain\Order;
-use Deliverea\CoffeeMachine\Shared\Domain\Order\OrderId;
-use Deliverea\CoffeeMachine\Order\Domain\OrderRepositoryInterface;
+use AlexPerez\CoffeeMachine\Order\Domain\Exception\NotFoundOrderException;
+use AlexPerez\CoffeeMachine\Order\Domain\Order;
+use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
+use AlexPerez\CoffeeMachine\Order\Domain\OrderRepositoryInterface;
 
 final class InMemoryOrderRepository implements OrderRepositoryInterface
 {

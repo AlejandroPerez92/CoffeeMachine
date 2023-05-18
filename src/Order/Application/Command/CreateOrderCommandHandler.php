@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Order\Application\Command;
+namespace AlexPerez\CoffeeMachine\Order\Application\Command;
 
-use Deliverea\CoffeeMachine\Order\Domain\Order;
-use Deliverea\CoffeeMachine\Order\Domain\OrderRepositoryInterface;
+use AlexPerez\CoffeeMachine\Order\Domain\Order;
+use AlexPerez\CoffeeMachine\Order\Domain\OrderRepositoryInterface;
 
 final class CreateOrderCommandHandler
 {

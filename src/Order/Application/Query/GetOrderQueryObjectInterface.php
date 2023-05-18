@@ -1,8 +1,8 @@
 <?php
 
-namespace Deliverea\CoffeeMachine\Order\Application\Query;
+namespace AlexPerez\CoffeeMachine\Order\Application\Query;
 
-use Deliverea\CoffeeMachine\Order\Domain\Order;
+use AlexPerez\CoffeeMachine\Order\Domain\Order;
 
 interface GetOrderQueryObjectInterface
 {

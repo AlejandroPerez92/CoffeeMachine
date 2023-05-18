@@ -16,83 +16,83 @@ services:
     autowire: true
 
   ### Handlers
-  Deliverea\CoffeeMachine\App\:
+  AlexPerez\CoffeeMachine\App\:
     resource: '../../app'
 
   Symfony\Component\Console\Application:
     public: true
 
-  delivera.order.create_handler:
-    class: Deliverea\CoffeeMachine\Order\Application\Command\CreateOrderCommandHandler
+  alex-perez.order.create_handler:
+    class: AlexPerez\CoffeeMachine\Order\Application\Command\CreateOrderCommandHandler
     tags:
       - { name: tactician.handler, typehints: true, bus: default }
 
-  delivera.line.create_handler:
-    class: Deliverea\CoffeeMachine\Order\Application\Command\CreateOrderLineCommandHandler
+  alex-perez.line.create_handler:
+    class: AlexPerez\CoffeeMachine\Order\Application\Command\CreateOrderLineCommandHandler
     tags:
       - { name: tactician.handler, typehints: true, bus: default }
 
-  delivera.order.pay_handler:
-    class: Deliverea\CoffeeMachine\Order\Application\Command\PayOrderCommandHandler
+  alex-perez.order.pay_handler:
+    class: AlexPerez\CoffeeMachine\Order\Application\Command\PayOrderCommandHandler
     tags:
       - { name: tactician.handler, typehints: true, bus: default }
 
-  deliverea.order.query_handler:
-    class: Deliverea\CoffeeMachine\Order\Application\Query\GetOrderQueryHandler
+  alex-perez.order.query_handler:
+    class: AlexPerez\CoffeeMachine\Order\Application\Query\GetOrderQueryHandler
     tags:
-      - { name: tactician.handler, command: Deliverea\CoffeeMachine\Order\Infrastructure\Ui\ConsoleQueryObject, bus: query }
+      - { name: tactician.handler, command: AlexPerez\CoffeeMachine\Order\Infrastructure\Ui\ConsoleQueryObject, bus: query }
 
-  deliverea.sales.order_update_handler:
-    class: Deliverea\CoffeeMachine\Sales\Application\Command\UpdateOrderLinesCommandHandler
+  alex-perez.sales.order_update_handler:
+    class: AlexPerez\CoffeeMachine\Sales\Application\Command\UpdateOrderLinesCommandHandler
     tags:
       - { name: tactician.handler, typehints: true, bus: default }
 
-  delivera.sales.product_sales_update_handler:
-    class: Deliverea\CoffeeMachine\Sales\Application\Command\UpdateSaleCommandHandler
+  alex-perez.sales.product_sales_update_handler:
+    class: AlexPerez\CoffeeMachine\Sales\Application\Command\UpdateSaleCommandHandler
     tags:
       - { name: tactician.handler, typehints: true, bus: default }
 
-  delivera.sales.product_sales_get_all_handler:
-    class: Deliverea\CoffeeMachine\Sales\Application\Query\GetAllProductSalesQueryHandler
+  alex-perez.sales.product_sales_get_all_handler:
+    class: AlexPerez\CoffeeMachine\Sales\Application\Query\GetAllProductSalesQueryHandler
     tags:
-      - { name: tactician.handler, command: Deliverea\CoffeeMachine\Sales\Infrastructure\Ui\ConsoleGetAllProductSalesObject, bus: query }
+      - { name: tactician.handler, command: AlexPerez\CoffeeMachine\Sales\Infrastructure\Ui\ConsoleGetAllProductSalesObject, bus: query }
 
   ### Subscribers
-  delivera.sales.order.subscriber:
-    class: Deliverea\CoffeeMachine\Sales\Infrastructure\OrderEventSubscriber
+  alex-perez.sales.order.subscriber:
+    class: AlexPerez\CoffeeMachine\Sales\Infrastructure\OrderEventSubscriber
     tags:
       - { name: domain.event_subscriber }
 
   ### Repositories
-  delivera.product.in_memory_repository:
-    class: Deliverea\CoffeeMachine\Order\Infrastructure\InMemoryProductRepository
+  alex-perez.product.in_memory_repository:
+    class: AlexPerez\CoffeeMachine\Order\Infrastructure\InMemoryProductRepository
     alias:
     arguments:
       - '%products.map.fixtures%'
-  Deliverea\CoffeeMachine\Order\Domain\ProductRepositoryInterface: '@delivera.product.in_memory_repository'
-  deliverea.order.repository:
-    class: Deliverea\CoffeeMachine\Order\Infrastructure\InMemoryOrderRepository
-  Deliverea\CoffeeMachine\Order\Domain\OrderRepositoryInterface: '@deliverea.order.repository'
+  AlexPerez\CoffeeMachine\Order\Domain\ProductRepositoryInterface: '@alex-perez.product.in_memory_repository'
+  alex-perez.order.repository:
+    class: AlexPerez\CoffeeMachine\Order\Infrastructure\InMemoryOrderRepository
+  AlexPerez\CoffeeMachine\Order\Domain\OrderRepositoryInterface: '@alex-perez.order.repository'
 
-  deliverea.promotion.in_memory_repository:
-    class: Deliverea\CoffeeMachine\Order\Infrastructure\InMemoryPromotionRepository
+  alex-perez.promotion.in_memory_repository:
+    class: AlexPerez\CoffeeMachine\Order\Infrastructure\InMemoryPromotionRepository
     arguments:
       - '%promotions.map.fixtures%'
-  Deliverea\CoffeeMachine\Order\Domain\PromotionRepositoryInterface: '@deliverea.promotion.in_memory_repository'
+  AlexPerez\CoffeeMachine\Order\Domain\PromotionRepositoryInterface: '@alex-perez.promotion.in_memory_repository'
 
-  deliverea.sales.order.repository:
-    class: Deliverea\CoffeeMachine\Sales\Infrastructure\InMemoryOrderRepository
+  alex-perez.sales.order.repository:
+    class: AlexPerez\CoffeeMachine\Sales\Infrastructure\InMemoryOrderRepository
 
-  Deliverea\CoffeeMachine\Sales\Domain\OrderRepositoryInterface: '@deliverea.sales.order.repository'
+  AlexPerez\CoffeeMachine\Sales\Domain\OrderRepositoryInterface: '@alex-perez.sales.order.repository'
 
-  deliverea.sales.product_sales.repository:
-    class: Deliverea\CoffeeMachine\Sales\Infrastructure\InFileProductSaleRepository
+  alex-perez.sales.product_sales.repository:
+    class: AlexPerez\CoffeeMachine\Sales\Infrastructure\InFileProductSaleRepository
     arguments:
       - '%env(resolve:DATA_FILE)%'
 
-  Deliverea\CoffeeMachine\Sales\Domain\ProductSaleRepositoryInterface: '@deliverea.sales.product_sales.repository'
+  AlexPerez\CoffeeMachine\Sales\Domain\ProductSaleRepositoryInterface: '@alex-perez.sales.product_sales.repository'
 
   ### Bus
-  deliverea.event_bus:
-    class: Deliverea\CoffeeMachine\Shared\Infrastructure\Eventbus\EventBusWrapper
-  Deliverea\CoffeeMachine\Shared\Domain\EventBus\EventBusInterface: '@deliverea.event_bus'
+  alex-perez.event_bus:
+    class: AlexPerez\CoffeeMachine\Shared\Infrastructure\Eventbus\EventBusWrapper
+  AlexPerez\CoffeeMachine\Shared\Domain\EventBus\EventBusInterface: '@alex-perez.event_bus'

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Shared\Domain\Aggregate;
+namespace AlexPerez\CoffeeMachine\Shared\Domain\Aggregate;
 
-use Deliverea\CoffeeMachine\Shared\Domain\EventBus\DomainEvent;
+use AlexPerez\CoffeeMachine\Shared\Domain\EventBus\DomainEvent;
 
 abstract class AggregateRoot
 {

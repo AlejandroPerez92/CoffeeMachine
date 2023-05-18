@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Order\Infrastructure\Ui;
+namespace AlexPerez\CoffeeMachine\Order\Infrastructure\Ui;
 
 final class ConsoleResponseFactory
 {

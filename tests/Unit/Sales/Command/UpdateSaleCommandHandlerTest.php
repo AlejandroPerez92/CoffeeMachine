@@ -1,18 +1,18 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Tests\Unit\Sales\Command;
+namespace AlexPerez\CoffeeMachine\Tests\Unit\Sales\Command;
 
-use Deliverea\CoffeeMachine\Sales\Application\Command\UpdateSaleCommand;
-use Deliverea\CoffeeMachine\Sales\Domain\OrderLine;
-use Deliverea\CoffeeMachine\Sales\Application\Command\UpdateSaleCommandHandler;
-use Deliverea\CoffeeMachine\Sales\Domain\Order;
-use Deliverea\CoffeeMachine\Sales\Domain\OrderRepositoryInterface;
-use Deliverea\CoffeeMachine\Sales\Domain\ProductSale;
-use Deliverea\CoffeeMachine\Sales\Domain\ProductSaleRepositoryInterface;
-use Deliverea\CoffeeMachine\Sales\Infrastructure\InMemoryOrderRepository;
-use Deliverea\CoffeeMachine\Sales\Infrastructure\InMemoryProductSaleRepository;
-use Deliverea\CoffeeMachine\Shared\Domain\Order\OrderId;
+use AlexPerez\CoffeeMachine\Sales\Application\Command\UpdateSaleCommand;
+use AlexPerez\CoffeeMachine\Sales\Domain\OrderLine;
+use AlexPerez\CoffeeMachine\Sales\Application\Command\UpdateSaleCommandHandler;
+use AlexPerez\CoffeeMachine\Sales\Domain\Order;
+use AlexPerez\CoffeeMachine\Sales\Domain\OrderRepositoryInterface;
+use AlexPerez\CoffeeMachine\Sales\Domain\ProductSale;
+use AlexPerez\CoffeeMachine\Sales\Domain\ProductSaleRepositoryInterface;
+use AlexPerez\CoffeeMachine\Sales\Infrastructure\InMemoryOrderRepository;
+use AlexPerez\CoffeeMachine\Sales\Infrastructure\InMemoryProductSaleRepository;
+use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
 use PHPUnit\Framework\TestCase;
 
 final class UpdateSaleCommandHandlerTest extends TestCase

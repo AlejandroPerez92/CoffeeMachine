@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Sales\Domain;
+namespace AlexPerez\CoffeeMachine\Sales\Domain;
 
 final class OrderLine
 {

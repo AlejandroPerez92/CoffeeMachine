@@ -1,17 +1,17 @@
 <?php
 
-namespace Deliverea\CoffeeMachine\App\Command;
+namespace AlexPerez\CoffeeMachine\App\Command;
 
-use Deliverea\CoffeeMachine\Order\Application\Command\CreateOrderCommand;
-use Deliverea\CoffeeMachine\Order\Application\Command\CreateOrderLineCommand;
-use Deliverea\CoffeeMachine\Order\Application\Command\PayOrderCommand;
-use Deliverea\CoffeeMachine\Order\Domain\Exception\LimitUnitsException;
-use Deliverea\CoffeeMachine\Order\Domain\Exception\NotEnoughAmountToPayOrder;
-use Deliverea\CoffeeMachine\Order\Domain\Exception\NotFoundProductException;
-use Deliverea\CoffeeMachine\Shared\Domain\Order\OrderId;
-use Deliverea\CoffeeMachine\Order\Infrastructure\Ui\ConsoleQueryObject;
-use Deliverea\CoffeeMachine\Order\Infrastructure\Ui\ConsoleResponseFactory;
-use Deliverea\CoffeeMachine\Shared\Domain\PositiveInteger\NegativeValueException;
+use AlexPerez\CoffeeMachine\Order\Application\Command\CreateOrderCommand;
+use AlexPerez\CoffeeMachine\Order\Application\Command\CreateOrderLineCommand;
+use AlexPerez\CoffeeMachine\Order\Application\Command\PayOrderCommand;
+use AlexPerez\CoffeeMachine\Order\Domain\Exception\LimitUnitsException;
+use AlexPerez\CoffeeMachine\Order\Domain\Exception\NotEnoughAmountToPayOrder;
+use AlexPerez\CoffeeMachine\Order\Domain\Exception\NotFoundProductException;
+use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
+use AlexPerez\CoffeeMachine\Order\Infrastructure\Ui\ConsoleQueryObject;
+use AlexPerez\CoffeeMachine\Order\Infrastructure\Ui\ConsoleResponseFactory;
+use AlexPerez\CoffeeMachine\Shared\Domain\PositiveInteger\NegativeValueException;
 use League\Tactician\CommandBus;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;

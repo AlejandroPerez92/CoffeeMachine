@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Order\Domain;
+namespace AlexPerez\CoffeeMachine\Order\Domain;
 
 interface ProductRepositoryInterface
 {

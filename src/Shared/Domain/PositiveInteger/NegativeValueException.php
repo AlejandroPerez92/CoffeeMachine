@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Shared\Domain\PositiveInteger;
+namespace AlexPerez\CoffeeMachine\Shared\Domain\PositiveInteger;
 
 final class NegativeValueException extends \LogicException
 {

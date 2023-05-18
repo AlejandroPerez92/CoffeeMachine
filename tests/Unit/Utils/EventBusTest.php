@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Tests\Unit\Utils;
+namespace AlexPerez\CoffeeMachine\Tests\Unit\Utils;
 
-use Deliverea\CoffeeMachine\Shared\Domain\EventBus\DomainEvent;
-use Deliverea\CoffeeMachine\Shared\Domain\EventBus\EventBusInterface;
+use AlexPerez\CoffeeMachine\Shared\Domain\EventBus\DomainEvent;
+use AlexPerez\CoffeeMachine\Shared\Domain\EventBus\EventBusInterface;
 
 final class EventBusTest implements EventBusInterface
 {

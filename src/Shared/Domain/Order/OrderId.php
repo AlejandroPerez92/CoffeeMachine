@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Shared\Domain\Order;
+namespace AlexPerez\CoffeeMachine\Shared\Domain\Order;
 
-use Deliverea\CoffeeMachine\Shared\Domain\Uuid\Uuid;
+use AlexPerez\CoffeeMachine\Shared\Domain\Uuid\Uuid;
 
 final class OrderId
 {

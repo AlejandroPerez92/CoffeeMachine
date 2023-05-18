@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Tests\Unit\Sales\Command;
+namespace AlexPerez\CoffeeMachine\Tests\Unit\Sales\Command;
 
-use Deliverea\CoffeeMachine\Sales\Application\Command\UpdateOrderLinesCommand;
-use Deliverea\CoffeeMachine\Sales\Application\Command\UpdateOrderLinesCommandHandler;
-use Deliverea\CoffeeMachine\Sales\Domain\Order;
-use Deliverea\CoffeeMachine\Sales\Domain\OrderRepositoryInterface;
-use Deliverea\CoffeeMachine\Sales\Infrastructure\InMemoryOrderRepository;
-use Deliverea\CoffeeMachine\Shared\Domain\Order\OrderId;
+use AlexPerez\CoffeeMachine\Sales\Application\Command\UpdateOrderLinesCommand;
+use AlexPerez\CoffeeMachine\Sales\Application\Command\UpdateOrderLinesCommandHandler;
+use AlexPerez\CoffeeMachine\Sales\Domain\Order;
+use AlexPerez\CoffeeMachine\Sales\Domain\OrderRepositoryInterface;
+use AlexPerez\CoffeeMachine\Sales\Infrastructure\InMemoryOrderRepository;
+use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
 use PHPUnit\Framework\TestCase;
 
 final class UpdateOrderLinesCommandHandlerTest extends TestCase

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Deliverea\CoffeeMachine\Order\Domain\Exception;
+namespace AlexPerez\CoffeeMachine\Order\Domain\Exception;
 
-use Deliverea\CoffeeMachine\Shared\Domain\Money\Money;
+use AlexPerez\CoffeeMachine\Shared\Domain\Money\Money;
 
 final class NotEnoughAmountToPayOrder extends \LogicException
 {
