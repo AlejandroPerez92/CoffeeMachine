@@ -27,7 +27,7 @@ final class CreateOrderCommandHandlerTest extends TestCase
      */
     public function given_order_id_when_handle_then_order_should_be_created()
     {
-        $orderId = OrderId::Create();
+        $orderId = OrderId::create();
         $this->handler->handle(new CreateOrderCommand($orderId, false));
         $order = $this->orderRepository->getByIdOrFail($orderId);
         self::assertNotNull($order);
@@ -38,7 +38,7 @@ final class CreateOrderCommandHandlerTest extends TestCase
      */
     public function given_order_id_and_hot_when_handle_then_order_hot_should_be_created()
     {
-        $orderId = OrderId::Create();
+        $orderId = OrderId::create();
         $this->handler->handle(new CreateOrderCommand($orderId, true));
         $order = $this->orderRepository->getByIdOrFail($orderId);
         self::assertTrue($order->hot());

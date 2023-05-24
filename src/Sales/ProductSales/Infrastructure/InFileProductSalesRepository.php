@@ -4,10 +4,10 @@ declare(strict_types=1);
 namespace AlexPerez\CoffeeMachine\Sales\ProductSales\Infrastructure;
 
 use AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\Exception\NotFoundSalesException;
-use AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\ProductSale;
-use AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\ProductSaleRepositoryInterface;
+use AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\ProductSales;
+use AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\ProductSalesRepositoryInterface;
 
-final class InFileProductSaleRepository implements ProductSaleRepositoryInterface
+final class InFileProductSalesRepository implements ProductSalesRepositoryInterface
 {
     private string $fileRoute;
     private array $data = [];
@@ -18,7 +18,7 @@ final class InFileProductSaleRepository implements ProductSaleRepositoryInterfac
         $this->loadData();
     }
 
-    public function getByProductNameOrFail(string $productName): ProductSale
+    public function getByProductNameOrFail(string $productName): ProductSales
     {
         $this->loadData();
 
@@ -35,7 +35,7 @@ final class InFileProductSaleRepository implements ProductSaleRepositoryInterfac
         return $this->data;
     }
 
-    public function save(ProductSale $productSale)
+    public function save(ProductSales $productSale)
     {
         $this->loadData();
         $this->data[$productSale->name()] = $productSale;

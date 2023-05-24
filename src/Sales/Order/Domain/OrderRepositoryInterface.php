@@ -1,6 +1,6 @@
 <?php
 
-namespace AlexPerez\CoffeeMachine\Sales\ProductSales\Domain;
+namespace AlexPerez\CoffeeMachine\Sales\Order\Domain;
 
 use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
 

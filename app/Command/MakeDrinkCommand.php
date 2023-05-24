@@ -69,7 +69,7 @@ class MakeDrinkCommand extends Command
         $sugars = (int) $input->getArgument('sugars');
         $extraHot = $input->getOption('extra-hot');
 
-        $orderId = OrderId::Create();
+        $orderId = OrderId::create();
 
         $this->commandBus->handle(new CreateOrderCommand($orderId, $extraHot));
 

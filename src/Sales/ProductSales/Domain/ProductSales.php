@@ -3,15 +3,14 @@ declare(strict_types=1);
 
 namespace AlexPerez\CoffeeMachine\Sales\ProductSales\Domain;
 
-final class ProductSale
-{
-    private string $name;
-    private int $total;
+use AlexPerez\CoffeeMachine\Shared\Domain\Aggregate\AggregateRoot;
 
-    public function __construct(string $name, int $total)
-    {
-        $this->name = $name;
-        $this->total = $total;
+final class ProductSales extends AggregateRoot
+{
+    public function __construct(
+        private string $name,
+        private int $total,
+    ) {
     }
 
     public function name(): string
@@ -27,5 +26,10 @@ final class ProductSale
     public function incrementTotal(int $total): void
     {
         $this->total += $total;
+    }
+
+    public static function aggregateId(): string
+    {
+        return 'product-sale';
     }
 }

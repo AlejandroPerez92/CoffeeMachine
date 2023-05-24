@@ -1,10 +1,43 @@
 # Coffee Machine
+The Coffee Machine is an awesome console application that takes a few input parameters
+(drink type, amount of money, number of sugars, extra hot check)
+and is capable of ordering a drink while displaying a cool message for the desired drink.
+It also includes a sales context to keep track of the total sales for each product.
 
-Coffee Machine is an awesome console application that from a few input parameters (drink type, amount of money, number of sugars, extra hot check) is capable to order a drink and show a cool message of the desired drink.
-It has a sale context for accumulate the sales total of each product.
+## What's the goal
+This is a simple repo for improve, test and showcase my abilities.
+
+The project simulates a IT company with two isolated teams (Orders and Sales)
+
+Periodically I will iterate the project for implement new knowledge and technologies
+
+## Current status
+This application is implemented using the Symfony CLI framework and Tactician as the bus implementation.
+It was designed following the principles of Domain-Driven Design (DDD) and tested using PHPUnit.
+
+The project is structured into two bounded contexts:
+1. Order: This bounded context contains all the logic for the order process, from ordering a drink to pay it.
+2. Sales: This bounded context is responsible for tracking the total income per product. It consists of two modules:
+   1. Orders: To ensure the independence of the two teams, Sales has this module to maintain a projection of the Orders and dispatch custom events.
+   2. ProductSales: By listening to the custom events dispatched by our team in their Order module, it increments the total product income.
+
+## RoadBook
+While I don't have a specific timeline, I do have a list of tasks to complete:
+
+1. ~~Refactor the Sales bounded context to promote the Order module as a new module.~~
+2. Refactor domain events to use object attributes as payloads 
+(since the listeners are in the infrastructure layer, it doesn't matter if they use objects from other bounded contexts and modules).
+3. Refactor all classes to use PHP 8.1 constructors.
+4. Implement real persistence using MySQL, Redis, and Mongo to provide examples in all three technologies.
+5. Refactor unit tests to use mocks instead of in-memory repositories.
+6. Install Symfony Messenger and migrate the buses to Symfony Messenger.
+7. Utilize an AMQBroker to dispatch domain events and make the consumers asynchronous.
+8. Install Symfony API.
+9. Install Behat.
+10. Create endpoints to interact with the services.
 
 ## How it works
-
+### Order your dirk
 Command
 ```
 app:order-drink 
@@ -33,32 +66,7 @@ List prices
 |Coffee|0.5|
 |Chocolate|0.6|
 
-Validations
-* If the drink type is not *tea*, *coffee* or *chocolate*, it shows the following message:
-```
-The drink type should be tea, coffee or chocolate.
-```
-* If the amount of money does not reach the price of the drink, a message as the following is displayed:
-```
-The tea costs 0.4.
-```
-* If the number of sugars is not between 0 and 2, it shows a message like this:
-```
-The number of sugars should be between 0 and 2.
-```
-* If the arguments are right, the displayed message is:
-```
-You have ordered a coffee
-```
-* If the number of sugars is greater than 0, it includes the stick to the drink and it shows a message similar tot this:
-```
-You have ordered a coffee with 2 sugars (stick included).
-```
-* If it adds extra hot option, the displayed message will be:
-```
-You have ordered a coffee extra hot with 2 sugars (stick included)    
-```
-Sales
+### See the sales resume
 ```
 app:sales
 ```
@@ -67,11 +75,6 @@ app:sales
 |Tea|15|
 |Coffee|25.75|
 |Chocolate|36|
-
-## Current status
-
-This application is implemented using Symfony CLI framework and Tactician as bus implementation.
-It was designed using DDD principles and tested using PHPUnit
 
 ## Project set up
 

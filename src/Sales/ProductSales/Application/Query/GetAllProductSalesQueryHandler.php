@@ -3,15 +3,12 @@ declare(strict_types=1);
 
 namespace AlexPerez\CoffeeMachine\Sales\ProductSales\Application\Query;
 
-use AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\ProductSaleRepositoryInterface;
+use AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\ProductSalesRepositoryInterface;
 
 final class GetAllProductSalesQueryHandler
 {
-    private ProductSaleRepositoryInterface $productSaleRepository;
-
-    public function __construct(ProductSaleRepositoryInterface $productSaleRepository)
+    public function __construct(private readonly ProductSalesRepositoryInterface $productSaleRepository)
     {
-        $this->productSaleRepository = $productSaleRepository;
     }
 
     public function handle(GetAllProductSalesQueryObjectInterface $object): GetAllProductSalesQueryObjectInterface

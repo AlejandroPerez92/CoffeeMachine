@@ -10,7 +10,7 @@ use AlexPerez\CoffeeMachine\Shared\Domain\EventBus\DomainEvent;
 
 final class OrderLineAdded extends DomainEvent
 {
-    const NAME = 'line.added';
+    const NAME = 'line_added';
 
     public function __construct(OrderId $orderId, OrderLine $orderLine)
     {
@@ -22,7 +22,6 @@ final class OrderLineAdded extends DomainEvent
           'total' => $orderLine->total()->value()
         ];
     }
-
 
     public static function name(): string
     {

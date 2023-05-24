@@ -127,7 +127,7 @@ final class CreateOrderLineCommandHandlerTest extends TestCase
     {
         $this->handler->handle(new CreateOrderLineCommand('tea', 1, '45b4b0e2-4acc-45a2-8276-a73e44a66576'));
         $order = $this->orderRepository->getByIdOrFail(new OrderId('45b4b0e2-4acc-45a2-8276-a73e44a66576'));
-        self::assertTrue($this->eventBus->hasEvents('order.line.added'));
+        self::assertTrue($this->eventBus->hasEvents('order.order.line_added'));
     }
 
     private function clearOrderRepo()

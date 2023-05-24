@@ -2,7 +2,7 @@
 
 namespace AlexPerez\CoffeeMachine\Tests\Integration\Console;
 
-use AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\ProductSale;
+use AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\ProductSales;
 use AlexPerez\CoffeeMachine\Tests\Integration\IntegrationTestCase;
 use Symfony\Component\Console\Tester\CommandTester;
 
@@ -38,11 +38,11 @@ class GetSalesCommandTest extends IntegrationTestCase
     private function fixtures():string
     {
         $data = [
-            new ProductSale('chocolate',360),
-            new ProductSale('sugar',0),
-            new ProductSale('stick',0),
-            new ProductSale('tea',120),
-            new ProductSale('coffee',150)
+            new ProductSales('chocolate',360),
+            new ProductSales('sugar',0),
+            new ProductSales('stick',0),
+            new ProductSales('tea',120),
+            new ProductSales('coffee',150)
         ];
         return serialize($data);
     }

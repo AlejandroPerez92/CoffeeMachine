@@ -14,7 +14,7 @@ final class OrderId
         $this->id = new Uuid($id);
     }
 
-    public static function Create(): self
+    public static function create(): self
     {
         return new self((string) Uuid::Create());
     }

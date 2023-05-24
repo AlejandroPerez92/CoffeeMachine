@@ -4,13 +4,13 @@ declare(strict_types=1);
 namespace AlexPerez\CoffeeMachine\Sales\ProductSales\Infrastructure\Ui;
 
 use AlexPerez\CoffeeMachine\Sales\ProductSales\Application\Query\GetAllProductSalesQueryObjectInterface;
-use AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\ProductSale;
+use AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\ProductSales;
 
 final class ConsoleGetAllProductSalesObject implements GetAllProductSalesQueryObjectInterface
 {
     private array $productSales = [];
 
-    public function fill(ProductSale ...$productSales): void
+    public function fill(ProductSales ...$productSales): void
     {
         foreach ($productSales as $productSale) {
             $this->productSales[$productSale->name()] = $productSale->total();

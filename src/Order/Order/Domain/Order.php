@@ -26,8 +26,8 @@ final class Order extends AggregateRoot
         Money $total,
         \DateTimeImmutable $created,
         bool $paid,
-        bool $hot)
-    {
+        bool $hot
+    ) {
         $this->id = $id;
         $this->lines = $lines;
         $this->total = $total;
@@ -36,9 +36,16 @@ final class Order extends AggregateRoot
         $this->hot = $hot;
     }
 
-    public static function Create(OrderId $id, bool $hot): self
+    public static function create(OrderId $id, bool $hot): self
     {
-        $order = new self($id, [], new Money(0), new \DateTimeImmutable(), false, $hot);
+        $order = new self(
+            $id,
+            [],
+            new Money(0),
+            new \DateTimeImmutable(),
+            false,
+            $hot
+        );
 
         // TODO Dispatch domain events
         return $order;
@@ -71,10 +78,10 @@ final class Order extends AggregateRoot
 
     public static function aggregateId(): string
     {
-        return "order";
+        return "order.order";
     }
 
-    public function pay(Money $money)
+    public function pay(Money $money): void
     {
         if ($money->lessThan($this->total)) {
             throw new NotEnoughAmountToPayOrder($this->total, $money);
@@ -84,7 +91,7 @@ final class Order extends AggregateRoot
         $this->pushEvent(new OrderPaid($this));
     }
 
-    public function addLine(OrderLine $line)
+    public function addLine(OrderLine $line): void
     {
         if ($line->units()->lessThanOrEqual(new PositiveInteger(0))) {
             return;
