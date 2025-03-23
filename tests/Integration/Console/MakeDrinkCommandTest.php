@@ -3,18 +3,14 @@
 namespace AlexPerez\CoffeeMachine\Tests\Integration\Console;
 
 use AlexPerez\CoffeeMachine\Tests\Integration\IntegrationTestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Component\Console\Tester\CommandTester;
 
 class MakeDrinkCommandTest extends IntegrationTestCase
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-    }
 
-    /**
-     * @dataProvider ordersProvider
-     */
+    #[DataProvider('ordersProvider')]
     public function testCoffeeMachineReturnsTheExpectedOutput(
         string $drinkType,
         string $money,
@@ -39,7 +35,7 @@ class MakeDrinkCommandTest extends IntegrationTestCase
         $this->assertSame($expectedOutput, $output);
     }
 
-    public function ordersProvider(): array
+    public static function ordersProvider(): array
     {
         return [
             [

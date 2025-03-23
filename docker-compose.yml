@@ -1,9 +1,16 @@
 version: '3'
 
 services:
+    php:
+        build:
+            dockerfile: docker/images/php-cli/Dockerfile
+        volumes:
+            - '.:/var/www/html'
+        ports:
+            - '8080:8000'
+
     mysql:
-        image: coffee-machine.mysql
-        container_name: coffee-machine.mysql
+        image: mariadb
         environment:
             MYSQL_ROOT_PASSWORD: 'coffee_machine'
             MYSQL_DATABASE: 'coffee_machine'
@@ -11,11 +18,3 @@ services:
             MYSQL_PASSWORD: 'coffee_machine'
         ports:
             - "3305:3306"
-        networks:
-            coffee-machine_net:
-                ipv4_address: 172.50.0.3
-        tty: true
-
-networks:
-    coffee-machine_net:
-        external: true

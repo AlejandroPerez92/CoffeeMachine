@@ -12,6 +12,7 @@ use AlexPerez\CoffeeMachine\Sales\Order\Domain\OrderLine;
 use AlexPerez\CoffeeMachine\Sales\Order\Domain\OrderRepositoryInterface;
 use AlexPerez\CoffeeMachine\Sales\Order\Domain\OrderStatus;
 use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 final class UpdateOrderLinesCommandHandlerTest extends TestCase
@@ -26,9 +27,7 @@ final class UpdateOrderLinesCommandHandlerTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function given_not_exists_order_when_handle_then_new_order_should_be_created()
     {
         $order = $this->createOrder(lines: [new OrderLine('tea', 50)]);
@@ -50,9 +49,7 @@ final class UpdateOrderLinesCommandHandlerTest extends TestCase
         ));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function given_the_order_when_handle_then_order_should_have_a_line()
     {
         $order = $this->createOrder();

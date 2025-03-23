@@ -17,6 +17,7 @@ use AlexPerez\CoffeeMachine\Order\Order\Infrastructure\InMemoryPromotionReposito
 use AlexPerez\CoffeeMachine\Shared\Domain\EventBus\EventBusInterface;
 use AlexPerez\CoffeeMachine\Shared\Domain\Money\Money;
 use AlexPerez\CoffeeMachine\Tests\Unit\Utils\EventBusTest;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 final class CreateOrderLineCommandHandlerTest extends TestCase
@@ -65,9 +66,7 @@ final class CreateOrderLineCommandHandlerTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function given_line_when_handle_then_add_line_to_order()
     {
         $this->handler->handle(new CreateOrderLineCommand('tea', 1, '45b4b0e2-4acc-45a2-8276-a73e44a66576'));
@@ -76,9 +75,7 @@ final class CreateOrderLineCommandHandlerTest extends TestCase
         $this->clearOrderRepo();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function given_line_with_more_units_than_limit_when_handle_then_exception_rise()
     {
         $this->expectException(LimitUnitsException::class);
@@ -87,9 +84,7 @@ final class CreateOrderLineCommandHandlerTest extends TestCase
         $this->clearOrderRepo();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function given_line_with_promotion_when_handle_then_promotion_line_should_be_add()
     {
         $this->handler->handle(new CreateOrderLineCommand('sugar', 2, '45b4b0e2-4acc-45a2-8276-a73e44a66576'));
@@ -98,9 +93,7 @@ final class CreateOrderLineCommandHandlerTest extends TestCase
         $this->clearOrderRepo();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function given_line_when_handle_then_total_should_be_the_value_of_the_line()
     {
         $this->handler->handle(new CreateOrderLineCommand('tea', 1, '45b4b0e2-4acc-45a2-8276-a73e44a66576'));
@@ -109,9 +102,7 @@ final class CreateOrderLineCommandHandlerTest extends TestCase
         $this->clearOrderRepo();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function given_line_with_0_units_when_handle_then_line_not_be_added()
     {
         $this->handler->handle(new CreateOrderLineCommand('sugar', 0, '45b4b0e2-4acc-45a2-8276-a73e44a66576'));
@@ -120,9 +111,7 @@ final class CreateOrderLineCommandHandlerTest extends TestCase
         $this->clearOrderRepo();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function given_line_when_handle_then_should_dispatch_event()
     {
         $this->handler->handle(new CreateOrderLineCommand('tea', 1, '45b4b0e2-4acc-45a2-8276-a73e44a66576'));

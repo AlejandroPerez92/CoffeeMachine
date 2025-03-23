@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace AlexPerez\CoffeeMachine\App\DependencyInjection\CompilerPass;
+namespace AlexPerez\CoffeeMachine\Shared\Infrastructure\DependencyInjection\CompilerPass\CompilerPass;
 
 use AlexPerez\CoffeeMachine\Shared\Domain\EventBus\EventSubscriberInterface;
 use AlexPerez\CoffeeMachine\Shared\Infrastructure\Eventbus\EventBusWrapper;

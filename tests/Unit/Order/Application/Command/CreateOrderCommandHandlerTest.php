@@ -8,6 +8,7 @@ use AlexPerez\CoffeeMachine\Order\Order\Application\Command\CreateOrderCommandHa
 use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
 use AlexPerez\CoffeeMachine\Order\Order\Domain\OrderRepositoryInterface;
 use AlexPerez\CoffeeMachine\Order\Order\Infrastructure\InMemoryOrderRepository;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 final class CreateOrderCommandHandlerTest extends TestCase
@@ -22,9 +23,7 @@ final class CreateOrderCommandHandlerTest extends TestCase
         $this->handler = new CreateOrderCommandHandler($this->orderRepository);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function given_order_id_when_handle_then_order_should_be_created()
     {
         $orderId = OrderId::create();
@@ -33,9 +32,7 @@ final class CreateOrderCommandHandlerTest extends TestCase
         self::assertNotNull($order);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function given_order_id_and_hot_when_handle_then_order_hot_should_be_created()
     {
         $orderId = OrderId::create();

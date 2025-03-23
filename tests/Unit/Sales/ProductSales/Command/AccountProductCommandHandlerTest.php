@@ -8,6 +8,7 @@ use AlexPerez\CoffeeMachine\Sales\ProductSales\Application\Command\AccountProduc
 use AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\Exception\NotFoundSalesException;
 use AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\ProductSales;
 use AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\ProductSalesRepositoryInterface;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 final class AccountProductCommandHandlerTest extends TestCase
@@ -22,9 +23,7 @@ final class AccountProductCommandHandlerTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function given_new_product_sales_when_handle_then_create_product_sales()
     {
         $expectSales = new ProductSales(
@@ -44,9 +43,7 @@ final class AccountProductCommandHandlerTest extends TestCase
         $this->commandHandler->handle(new AccountProductCommand('tea', 50));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function given_exist_order_sales_when_handle_then_increment_total()
     {
         $productSales = new ProductSales(

@@ -13,6 +13,7 @@ use AlexPerez\CoffeeMachine\Sales\Order\Domain\OrderRepositoryInterface;
 use AlexPerez\CoffeeMachine\Sales\Order\Domain\OrderStatus;
 use AlexPerez\CoffeeMachine\Shared\Domain\EventBus\EventBusInterface;
 use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 final class UpdateOrderStatusCommandHandlerTest extends TestCase
@@ -28,9 +29,7 @@ final class UpdateOrderStatusCommandHandlerTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function given_not_exists_order_when_handle_then_exception_should_be_throws()
     {
         $order = $this->createOrder(lines: [new OrderLine('tea', 50)]);
@@ -46,9 +45,7 @@ final class UpdateOrderStatusCommandHandlerTest extends TestCase
         ));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function given_pending_order_when_handle_then_order_should_update_status()
     {
         $order = $this->createOrder(status: OrderStatus::pending);
@@ -70,9 +67,7 @@ final class UpdateOrderStatusCommandHandlerTest extends TestCase
         $this->commandHandler->handle(new UpdateOrderStatusCommand($order->id->value(), 'paid'));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function given_paid_order_when_handle_then_nothing_should_be_do()
     {
         $order = $this->createOrder(

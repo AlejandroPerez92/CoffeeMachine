@@ -3,3 +3,8 @@ vendor/
 /.phpunit.result.cache
 /var/
 /data.txt
+
+###> phpunit/phpunit ###
+/phpunit.xml
+/.phpunit.cache/
+###< phpunit/phpunit ###

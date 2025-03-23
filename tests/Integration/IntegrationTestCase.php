@@ -2,12 +2,10 @@
 
 namespace AlexPerez\CoffeeMachine\Tests\Integration;
 
-use AlexPerez\CoffeeMachine\App\AppKernel;
-use PHPUnit\Framework\TestCase;
-use Symfony\Component\Console\Application;
-use Symfony\Component\Dotenv\Dotenv;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-class IntegrationTestCase extends TestCase
+class IntegrationTestCase extends KernelTestCase
 {
     /** @var Application */
     protected $application;
@@ -15,15 +13,8 @@ class IntegrationTestCase extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-
-        $kernel = new AppKernel('test',false);
-        $kernel->boot();
-
-        $dotenv = new Dotenv();
-        $dotenv->load(__DIR__.'/../../.env'.'.test');
-
-        $container = $kernel->getContainer();
-        $this->application = $container->get(Application::class);
+        self::bootKernel();
+        $this->application = new Application(self::$kernel);
     }
 
     protected function tearDown(): void

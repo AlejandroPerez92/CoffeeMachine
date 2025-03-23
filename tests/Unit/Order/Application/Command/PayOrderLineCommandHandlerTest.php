@@ -14,6 +14,7 @@ use AlexPerez\CoffeeMachine\Shared\Domain\EventBus\EventBusInterface;
 use AlexPerez\CoffeeMachine\Shared\Domain\Money\Money;
 use AlexPerez\CoffeeMachine\Shared\Infrastructure\Eventbus\EventBusWrapper;
 use AlexPerez\CoffeeMachine\Tests\Unit\Utils\EventBusTest;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 final class PayOrderLineCommandHandlerTest extends TestCase
@@ -31,9 +32,7 @@ final class PayOrderLineCommandHandlerTest extends TestCase
         $this->handler = new PayOrderCommandHandler($this->orderRepository, $this->eventBus);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function given_order_and_amount_when_handle_then_order_should_be_paid()
     {
         $this->handler->handle(new PayOrderCommand(new OrderId('45b4b0e2-4acc-45a2-8276-a73e44a66576'), 40));
@@ -41,9 +40,7 @@ final class PayOrderLineCommandHandlerTest extends TestCase
         self::assertTrue($order->paid());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function given_order_and_less_amount_when_handle_then_exception_should_be_rose()
     {
         $this->expectException(NotEnoughAmountToPayOrder::class);
