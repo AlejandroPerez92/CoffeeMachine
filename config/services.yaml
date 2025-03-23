@@ -1,15 +1,6 @@
 imports:
     - { resource: fixtures/products.yaml }
     - { resource: fixtures/promotions.yaml }
-tactician:
-    commandbus:
-        default:
-            middleware:
-                - tactician.middleware.locking
-                - tactician.middleware.command_handler
-        query:
-            middleware:
-                - tactician.commandbus.query.middleware.command_handler
 
 services:
     _defaults:

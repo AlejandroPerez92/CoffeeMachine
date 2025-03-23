@@ -1,3 +1,0 @@
-#!/bin/bash
-
-docker build docker/images/php-cli -t coffee-machine.php-cli
