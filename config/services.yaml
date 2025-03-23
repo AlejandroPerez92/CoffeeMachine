@@ -84,7 +84,21 @@ services:
         arguments:
             - '%env(resolve:DATA_FILE)%'
 
-    AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\ProductSalesRepositoryInterface: '@alex-perez.sales.product_sales.repository'
+    AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\ProductSalesRepositoryInterface: '@AlexPerez\CoffeeMachine\Sales\ProductSales\Infrastructure\RedisProductSalesRepository'
+
+    AlexPerez\CoffeeMachine\Shared\Infrastructure\Redis\RedisClientFactory:
+        arguments:
+            $host: redis
+            $port: 6379
+
+    alex-perez.shared.redis_client:
+        class: Predis\Client
+        factory: ['@AlexPerez\CoffeeMachine\Shared\Infrastructure\Redis\RedisClientFactory', 'create']
+
+    AlexPerez\CoffeeMachine\Sales\ProductSales\Infrastructure\RedisProductSalesRepository:
+        public: true
+        arguments:
+            - '@alex-perez.shared.redis_client'
 
     ### Bus
     alex-perez.event_bus:

@@ -3,6 +3,7 @@
 namespace AlexPerez\CoffeeMachine\Tests\Integration\Console;
 
 use AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\ProductSales;
+use AlexPerez\CoffeeMachine\Sales\ProductSales\Infrastructure\RedisProductSalesRepository;
 use AlexPerez\CoffeeMachine\Tests\Integration\IntegrationTestCase;
 use Symfony\Component\Console\Tester\CommandTester;
 
@@ -11,7 +12,12 @@ class GetSalesCommandTest extends IntegrationTestCase
     protected function setUp(): void
     {
         parent::setUp();
-        file_put_contents($_ENV['DATA_FILE'],$this->fixtures());
+        /** @var RedisProductSalesRepository $repository */
+        $repository = $this->getContainer()->get(RedisProductSalesRepository::class);
+
+        foreach ($this->fixtures() as $fixture) {
+            $repository->save($fixture);
+        }
     }
 
     public function testCoffeeMachineReturnsTheExpectedOutput(): void
@@ -35,15 +41,14 @@ class GetSalesCommandTest extends IntegrationTestCase
         }
     }
 
-    private function fixtures():string
+    private function fixtures(): array
     {
-        $data = [
-            new ProductSales('chocolate',360),
-            new ProductSales('sugar',0),
-            new ProductSales('stick',0),
-            new ProductSales('tea',120),
-            new ProductSales('coffee',150)
+        return [
+            new ProductSales('chocolate', 360),
+            new ProductSales('sugar', 0),
+            new ProductSales('stick', 0),
+            new ProductSales('tea', 120),
+            new ProductSales('coffee', 150)
         ];
-        return serialize($data);
     }
 }

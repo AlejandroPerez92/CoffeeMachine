@@ -11,7 +11,7 @@ final class InFileProductSalesRepository implements ProductSalesRepositoryInterf
 {
     private array $data = [];
 
-    public function __construct(private string $fileRoute)
+    public function __construct(private readonly string $fileRoute)
     {
         $this->loadData();
     }
@@ -33,19 +33,19 @@ final class InFileProductSalesRepository implements ProductSalesRepositoryInterf
         return $this->data;
     }
 
-    public function save(ProductSales $productSale)
+    public function save(ProductSales $productSale): void
     {
         $this->loadData();
         $this->data[$productSale->name()] = $productSale;
         $this->saveData();
     }
 
-    private function saveData()
+    private function saveData(): void
     {
         file_put_contents($this->fileRoute, serialize($this->data));
     }
 
-    private function loadData()
+    private function loadData(): void
     {
         try{
             $fileData = @file_get_contents($this->fileRoute);
@@ -57,8 +57,5 @@ final class InFileProductSalesRepository implements ProductSalesRepositoryInterf
             $this->saveData();
             $this->data = [];
         }
-
-
-
     }
 }
