@@ -5,9 +5,9 @@ namespace AlexPerez\CoffeeMachine\Sales\ProductSales\Application\Query;
 
 use AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\ProductSalesRepositoryInterface;
 
-final class GetAllProductSalesQueryHandler
+final readonly class GetAllProductSalesQueryHandler
 {
-    public function __construct(private readonly ProductSalesRepositoryInterface $productSaleRepository)
+    public function __construct(private ProductSalesRepositoryInterface $productSaleRepository)
     {
     }
 

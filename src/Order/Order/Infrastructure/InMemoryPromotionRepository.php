@@ -10,11 +10,8 @@ use AlexPerez\CoffeeMachine\Shared\Domain\PositiveInteger\PositiveInteger;
 
 final class InMemoryPromotionRepository implements PromotionRepositoryInterface
 {
-    private array $data;
-
-    public function __construct(array $data = [])
+    public function __construct(private array $data = [])
     {
-        $this->data = $data;
     }
 
     public function getByApplyProductNameOrFail(string $productName): Promotion

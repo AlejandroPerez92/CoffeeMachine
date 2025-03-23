@@ -13,27 +13,8 @@ use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
 
 final class Order extends AggregateRoot
 {
-    private OrderId $id;
-    private array $lines;
-    private Money $total;
-    private \DateTimeImmutable $created;
-    private bool $paid;
-    private bool $hot;
-
-    public function __construct(
-        OrderId $id,
-        array $lines,
-        Money $total,
-        \DateTimeImmutable $created,
-        bool $paid,
-        bool $hot
-    ) {
-        $this->id = $id;
-        $this->lines = $lines;
-        $this->total = $total;
-        $this->created = $created;
-        $this->paid = $paid;
-        $this->hot = $hot;
+    public function __construct(private OrderId $id, private array $lines, private Money $total, private \DateTimeImmutable $created, private bool $paid, private bool $hot)
+    {
     }
 
     public static function create(OrderId $id, bool $hot): self
@@ -93,12 +74,12 @@ final class Order extends AggregateRoot
 
     public function addLine(OrderLine $line): void
     {
-        if ($line->units()->lessThanOrEqual(new PositiveInteger(0))) {
+        if ($line->units->lessThanOrEqual(new PositiveInteger(0))) {
             return;
         }
 
-        $this->lines[$line->productName()] = $line;
-        $this->total->increment($line->total());
+        $this->lines[$line->productName] = $line;
+        $this->total->increment($line->total);
 
         $this->pushEvent(OrderLineAdded::fromOrder($this->id, $line));
     }

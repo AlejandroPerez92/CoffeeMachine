@@ -8,11 +8,8 @@ use AlexPerez\CoffeeMachine\Order\Order\Domain\OrderRepositoryInterface;
 
 final class GetOrderQueryHandler
 {
-    private OrderRepositoryInterface $orderRepository;
-
-    public function __construct(OrderRepositoryInterface $orderRepository)
+    public function __construct(private OrderRepositoryInterface $orderRepository)
     {
-        $this->orderRepository = $orderRepository;
     }
 
     public function handle(GetOrderQueryObjectInterface $object): GetOrderQueryObjectInterface

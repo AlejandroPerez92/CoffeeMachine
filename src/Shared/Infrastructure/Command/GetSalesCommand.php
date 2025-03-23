@@ -13,12 +13,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 #[AsCommand('app:sales')]
 final class GetSalesCommand extends Command
 {
-    private CommandBus $queryBus;
-
-    public function __construct(CommandBus $queryBus)
+    public function __construct(private CommandBus $queryBus)
     {
         parent::__construct();
-        $this->queryBus = $queryBus;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int

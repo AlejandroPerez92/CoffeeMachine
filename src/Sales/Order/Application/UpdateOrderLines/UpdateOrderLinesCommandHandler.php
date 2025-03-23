@@ -9,9 +9,9 @@ use AlexPerez\CoffeeMachine\Sales\Order\Domain\OrderLine;
 use AlexPerez\CoffeeMachine\Sales\Order\Domain\OrderRepositoryInterface;
 use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
 
-final class UpdateOrderLinesCommandHandler
+final readonly class UpdateOrderLinesCommandHandler
 {
-    public function __construct(private readonly OrderRepositoryInterface $orderRepository)
+    public function __construct(private OrderRepositoryInterface $orderRepository)
     {
     }
 

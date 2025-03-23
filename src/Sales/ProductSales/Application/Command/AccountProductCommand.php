@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace AlexPerez\CoffeeMachine\Sales\ProductSales\Application\Command;
 
-final class AccountProductCommand
+final readonly class AccountProductCommand
 {
     public function __construct(
-        public readonly string $product,
-        public readonly int $total,
+        public string $product,
+        public int $total,
     ) {
     }
 }

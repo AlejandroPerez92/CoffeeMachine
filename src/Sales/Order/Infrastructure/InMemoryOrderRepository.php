@@ -10,11 +10,8 @@ use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
 
 final class InMemoryOrderRepository implements OrderRepositoryInterface
 {
-    private array $data;
-
-    public function __construct(array $data = [])
+    public function __construct(private array $data = [])
     {
-        $this->data = $data;
     }
 
     public function getOrderOrFail(OrderId $orderId): Order

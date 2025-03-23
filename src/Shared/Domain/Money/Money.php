@@ -7,11 +7,8 @@ use AlexPerez\CoffeeMachine\Shared\Domain\PositiveInteger\PositiveInteger;
 
 final class Money
 {
-    private int $value;
-
-    public function __construct(int $value)
+    public function __construct(private int $value)
     {
-        $this->value = $value;
     }
 
     public static function CreateFromFloat(float $value): self

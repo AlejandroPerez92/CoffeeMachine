@@ -30,9 +30,9 @@ final readonly class OrderLineAdded extends DomainEvent
     ): self {
         return new self(
             $orderId->value(),
-            $orderLine->productName(),
-            $orderLine->units()->value(),
-            $orderLine->total()->value(),
+            $orderLine->productName,
+            $orderLine->units->value(),
+            $orderLine->total->value(),
         );
     }
 

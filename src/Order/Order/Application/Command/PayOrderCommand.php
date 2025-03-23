@@ -5,25 +5,10 @@ namespace AlexPerez\CoffeeMachine\Order\Order\Application\Command;
 
 use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
 
-final class PayOrderCommand
+final readonly class PayOrderCommand
 {
-    private OrderId $orderId;
-    private int $amount;
-
-    public function __construct(OrderId $orderId, int $amount)
+    public function __construct(public OrderId $orderId, public int $amount)
     {
-        $this->orderId = $orderId;
-        $this->amount = $amount;
-    }
-
-    public function orderId(): OrderId
-    {
-        return $this->orderId;
-    }
-
-    public function amount(): int
-    {
-        return $this->amount;
     }
 
 }

@@ -9,15 +9,13 @@ use AlexPerez\CoffeeMachine\Order\Order\Domain\OrderLine;
 
 final class ConsoleQueryObject implements GetOrderQueryObjectInterface
 {
-    private string $orderId;
     private bool $isExtraHot;
     private bool $stick;
     private int $sugars;
     private string $product;
 
-    public function __construct(string $orderId)
+    public function __construct(private string $orderId)
     {
-        $this->orderId = $orderId;
     }
 
 
@@ -28,7 +26,7 @@ final class ConsoleQueryObject implements GetOrderQueryObjectInterface
 
     public function fill(Order $order)
     {
-        $this->product = $this->getFirstOrderLine($order)->productName();
+        $this->product = $this->getFirstOrderLine($order)->productName;
         $this->isExtraHot = $order->hot();
         $this->stick = (bool) $this->getUnitsByName($order, 'stick');
         $this->sugars = $this->getUnitsByName($order, 'sugar');
@@ -38,8 +36,8 @@ final class ConsoleQueryObject implements GetOrderQueryObjectInterface
     {
         /** @var OrderLine $line */
         foreach ($order->lines() as $line) {
-            if ($productName === $line->productName()) {
-                return $line->units()->value();
+            if ($productName === $line->productName) {
+                return $line->units->value();
             }
         }
 

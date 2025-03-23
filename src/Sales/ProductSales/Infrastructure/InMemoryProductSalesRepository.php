@@ -9,11 +9,8 @@ use AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\ProductSalesRepositoryInte
 
 final class InMemoryProductSalesRepository implements ProductSalesRepositoryInterface
 {
-    private array $data;
-
-    public function __construct($data = [])
+    public function __construct(private array $data = [])
     {
-        $this->data = $data;
     }
 
     public function getByProductNameOrFail(string $productName): ProductSales

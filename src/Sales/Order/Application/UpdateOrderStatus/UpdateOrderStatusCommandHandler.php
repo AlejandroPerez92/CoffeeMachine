@@ -9,11 +9,11 @@ use AlexPerez\CoffeeMachine\Shared\Domain\EventBus\EventBusInterface;
 use AlexPerez\CoffeeMachine\Shared\Domain\EventBus\EventSubscriberInterface;
 use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
 
-final class UpdateOrderStatusCommandHandler
+final readonly class UpdateOrderStatusCommandHandler
 {
     public function __construct(
-        private readonly OrderRepositoryInterface $orderRepository,
-        private readonly EventBusInterface $eventBus,
+        private OrderRepositoryInterface $orderRepository,
+        private EventBusInterface $eventBus,
     ) {
     }
 

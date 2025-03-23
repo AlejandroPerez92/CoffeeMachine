@@ -23,14 +23,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 #[AsCommand('app:order-drink')]
 class MakeDrinkCommand extends Command
 {
-    private CommandBus $commandBus;
-    private CommandBus $queryBus;
-
-    public function __construct(CommandBus $commandBus, CommandBus $queryBus)
+    public function __construct(private CommandBus $commandBus, private CommandBus $queryBus)
     {
         parent::__construct();
-        $this->commandBus = $commandBus;
-        $this->queryBus = $queryBus;
     }
 
     protected function configure(): void

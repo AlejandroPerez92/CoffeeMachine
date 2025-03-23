@@ -9,12 +9,10 @@ use AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\ProductSalesRepositoryInte
 
 final class InFileProductSalesRepository implements ProductSalesRepositoryInterface
 {
-    private string $fileRoute;
     private array $data = [];
 
-    public function __construct(string $fileRoute)
+    public function __construct(private string $fileRoute)
     {
-        $this->fileRoute = $fileRoute;
         $this->loadData();
     }
 

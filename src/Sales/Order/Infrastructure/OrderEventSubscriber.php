@@ -11,9 +11,9 @@ use AlexPerez\CoffeeMachine\Sales\Order\Application\UpdateOrderStatus\UpdateOrde
 use League\Tactician\CommandBus;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-final class OrderEventSubscriber implements EventSubscriberInterface
+final readonly class OrderEventSubscriber implements EventSubscriberInterface
 {
-    public function __construct(private readonly CommandBus $commandBus)
+    public function __construct(private CommandBus $commandBus)
     {
     }
 

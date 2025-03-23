@@ -8,10 +8,10 @@ use AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\Exception\NotFoundSalesExc
 use AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\ProductSales;
 use AlexPerez\CoffeeMachine\Sales\ProductSales\Domain\ProductSalesRepositoryInterface;
 
-final class AccountProductCommandHandler
+final readonly class AccountProductCommandHandler
 {
 
-    public function __construct(private readonly ProductSalesRepositoryInterface $repository)
+    public function __construct(private ProductSalesRepositoryInterface $repository)
     {
     }
 

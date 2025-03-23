@@ -14,33 +14,20 @@ use AlexPerez\CoffeeMachine\Shared\Domain\PositiveInteger\PositiveInteger;
 
 final class CreateOrderLineCommandHandler
 {
-    private ProductRepositoryInterface $productRepository;
-    private PromotionRepositoryInterface $promotionRepository;
-    private OrderRepositoryInterface $orderRepository;
-    private EventBusInterface $eventBus;
-
-    public function __construct(
-        ProductRepositoryInterface $productRepository,
-        PromotionRepositoryInterface $promotionRepository,
-        OrderRepositoryInterface $orderRepository,
-        EventBusInterface $eventBus)
+    public function __construct(private ProductRepositoryInterface $productRepository, private PromotionRepositoryInterface $promotionRepository, private OrderRepositoryInterface $orderRepository, private EventBusInterface $eventBus)
     {
-        $this->productRepository = $productRepository;
-        $this->promotionRepository = $promotionRepository;
-        $this->orderRepository = $orderRepository;
-        $this->eventBus = $eventBus;
     }
 
     public function handle(CreateOrderLineCommand $command): void
     {
-        $order = $this->orderRepository->getByIdOrFail(new OrderId($command->orderId()));
-        $orderLine = $this->createOrderLine($command->productName(),new PositiveInteger($command->units()));
+        $order = $this->orderRepository->getByIdOrFail(new OrderId($command->orderId));
+        $orderLine = $this->createOrderLine($command->productName,new PositiveInteger($command->units));
         $order->addLine($orderLine);
 
         try{
-            $promo = $this->promotionRepository->getByApplyProductNameOrFail($command->productName());
+            $promo = $this->promotionRepository->getByApplyProductNameOrFail($command->productName);
             if($promo->isApplicable($orderLine)){
-                $order->addLine($this->createOrderLine($promo->productToAdd(),new PositiveInteger(1)));
+                $order->addLine($this->createOrderLine($promo->productToAdd,new PositiveInteger(1)));
             }
         }catch (PromotionNotFoundException $e){
 
