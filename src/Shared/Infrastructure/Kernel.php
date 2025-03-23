@@ -14,7 +14,6 @@ class Kernel extends BaseKernel
 
     public function build(ContainerBuilder $container): void
     {
-//        $container->addCompilerPass(new CommandsToApplicationCompilerPass());
         $container->addCompilerPass(new RegisterListenersPass());
         $container->addCompilerPass(new SubscribersCompilerPass());
     }
