@@ -12,7 +12,7 @@ final class EventBusWrapper extends EventDispatcher implements EventBusInterface
     public function publish(DomainEvent ...$events): void
     {
         foreach ($events as $event) {
-            $this->dispatch($event, $event->aggregateId().'.'.$event->name());
+            $this->dispatch($event, $event->aggregateId.'.'.$event->name());
         }
     }
 }

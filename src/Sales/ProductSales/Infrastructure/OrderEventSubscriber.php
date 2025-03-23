@@ -5,6 +5,7 @@ namespace AlexPerez\CoffeeMachine\Sales\ProductSales\Infrastructure;
 
 use AlexPerez\CoffeeMachine\Sales\Order\Application\UpdateOrderLines\UpdateOrderLinesCommand;
 use AlexPerez\CoffeeMachine\Sales\Order\Application\UpdateOrderStatus\UpdateOrderStatusCommand;
+use AlexPerez\CoffeeMachine\Sales\Order\Domain\Event\OrderLinePaid;
 use AlexPerez\CoffeeMachine\Sales\ProductSales\Application\Command\AccountProductCommand;
 use AlexPerez\CoffeeMachine\Shared\Domain\EventBus\DomainEvent;
 use League\Tactician\CommandBus;
@@ -23,12 +24,12 @@ final class OrderEventSubscriber implements EventSubscriberInterface
         ];
     }
 
-    public function onLinePaid(DomainEvent $event): void
+    public function onLinePaid(OrderLinePaid $event): void
     {
         $this->commandBus->handle(
             new AccountProductCommand(
-                $event->payload()['productName'],
-                $event->payload()['total'],
+                $event->productName,
+                $event->total,
             )
         );
     }

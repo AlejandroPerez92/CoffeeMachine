@@ -1,11 +1,13 @@
 <?php
+
 declare(strict_types=1);
 
 namespace AlexPerez\CoffeeMachine\Sales\Order\Infrastructure;
 
+use AlexPerez\CoffeeMachine\Order\Order\Domain\Event\OrderLineAdded;
+use AlexPerez\CoffeeMachine\Order\Order\Domain\Event\OrderPaid;
 use AlexPerez\CoffeeMachine\Sales\Order\Application\UpdateOrderLines\UpdateOrderLinesCommand;
 use AlexPerez\CoffeeMachine\Sales\Order\Application\UpdateOrderStatus\UpdateOrderStatusCommand;
-use AlexPerez\CoffeeMachine\Shared\Domain\EventBus\DomainEvent;
 use League\Tactician\CommandBus;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
@@ -23,17 +25,24 @@ final class OrderEventSubscriber implements EventSubscriberInterface
         ];
     }
 
-    public function onLineAdded(DomainEvent $event): void
+    public function onLineAdded(OrderLineAdded $event): void
     {
         $this->commandBus->handle(
-            new UpdateOrderLinesCommand($event->payload()['orderId'],
-            $event->payload()['product'],
-            $event->payload()['total'])
+            new UpdateOrderLinesCommand(
+                $event->orderId,
+                $event->product,
+                $event->total,
+            )
         );
     }
 
-    public function onOrderPaid(DomainEvent $event): void
+    public function onOrderPaid(OrderPaid $event): void
     {
-        $this->commandBus->handle(new UpdateOrderStatusCommand($event->payload()['orderId'],'paid'));
+        $this->commandBus->handle(
+            new UpdateOrderStatusCommand(
+                $event->orderId,
+                'paid',
+            ),
+        );
     }
 }

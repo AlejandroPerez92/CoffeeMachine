@@ -13,7 +13,7 @@ final class EventBusTest implements EventBusInterface
     public function publish(DomainEvent ...$events): void
     {
         foreach ($events as $event) {
-            $this->events[$event->aggregateId() . '.' . $event->name()][] = $event;
+            $this->events[$event->aggregateId . '.' . $event->name()][] = $event;
         }
     }
 

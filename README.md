@@ -25,14 +25,14 @@ The project is structured into two bounded contexts:
 While I don't have a specific timeline, I do have a list of tasks to complete:
 
 1. ~~Refactor the Sales bounded context to promote the Order module as a new module.~~
-2. Refactor domain events to use object attributes as payloads 
-(since the listeners are in the infrastructure layer, it doesn't matter if they use objects from other bounded contexts and modules).
+2. ~~Refactor domain events to use object attributes as payloads 
+(since the listeners are in the infrastructure layer, it doesn't matter if they use objects from other bounded contexts and modules).~~
 3. Refactor all classes to use PHP 8.1 constructors.
 4. Implement real persistence using MySQL, Redis, and Mongo to provide examples in all three technologies.
 5. Refactor unit tests to use mocks instead of in-memory repositories.
 6. Install Symfony Messenger and migrate the buses to Symfony Messenger.
 7. Utilize an AMQBroker to dispatch domain events and make the consumers asynchronous.
-8. Install Symfony API.
+8. ~~Install Symfony API.~~
 9. Install Behat.
 10. Create endpoints to interact with the services.
 

@@ -88,7 +88,7 @@ final class Order extends AggregateRoot
         }
 
         $this->paid = true;
-        $this->pushEvent(new OrderPaid($this));
+        $this->pushEvent(OrderPaid::fromOrder($this));
     }
 
     public function addLine(OrderLine $line): void
@@ -100,7 +100,7 @@ final class Order extends AggregateRoot
         $this->lines[$line->productName()] = $line;
         $this->total->increment($line->total());
 
-        $this->pushEvent(new OrderLineAdded($this->id, $line));
+        $this->pushEvent(OrderLineAdded::fromOrder($this->id, $line));
     }
 
     public function hot(): bool

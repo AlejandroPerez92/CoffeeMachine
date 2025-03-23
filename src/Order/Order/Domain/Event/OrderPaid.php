@@ -6,17 +6,26 @@ namespace AlexPerez\CoffeeMachine\Order\Order\Domain\Event;
 use AlexPerez\CoffeeMachine\Order\Order\Domain\Order;
 use AlexPerez\CoffeeMachine\Shared\Domain\EventBus\DomainEvent;
 
-final class OrderPaid extends DomainEvent
+final readonly class OrderPaid extends DomainEvent
 {
     public const NAME = 'paid';
 
-    public function __construct(Order $order)
+    public function __construct(
+        public string $orderId,
+        public int $total,
+    )
     {
-        parent::__construct(Order::aggregateId());
-        $this->payload = [
-            'orderId' => $order->id()->value(),
-            'total'   => $order->total()->value()
-        ];
+        parent::__construct(
+            Order::aggregateId(),
+        );
+    }
+
+    public static function fromOrder(Order $order): self
+    {
+        return new self(
+            $order->id()->value(),
+            $order->total()->value(),
+        );
     }
 
     public static function name(): string
