@@ -108,6 +108,11 @@ services:
         arguments:
             - '@alex-perez.shared.redis_client'
 
+    ### Controllers
+    AlexPerez\CoffeeMachine\Order\Order\Infrastructure\Controller\:
+        resource: '../src/Order/Order/Infrastructure/Controller/*.php'
+        tags: ['controller.service_arguments']
+
     ### Bus
     alex-perez.event_bus:
         class: AlexPerez\CoffeeMachine\Shared\Infrastructure\Eventbus\EventBusWrapper

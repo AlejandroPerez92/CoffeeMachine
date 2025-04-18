@@ -1,0 +1,129 @@
+openapi: 3.0.0
+info:
+  title: Coffee Machine API
+  description: API for the Coffee Machine application
+  version: 1.0.0
+servers:
+  - url: /
+    description: Local server
+paths:
+  /api/orders:
+    post:
+      summary: Create a new order
+      description: Creates a new order with the option to make it extra hot
+      tags:
+        - Orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                extraHot:
+                  type: boolean
+                  description: Flag indicating if the user wants extra hot drink
+                  example: true
+              required:
+                - extraHot
+      responses:
+        '201':
+          description: Order created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  orderId:
+                    type: string
+                    description: The ID of the created order
+                    example: "order-id-value"
+  /api/orders/{orderId}/lines:
+    post:
+      summary: Add a line to an existing order
+      description: Adds a product line to an existing order
+      tags:
+        - Orders
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          description: ID of the order to add a line to
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                productName:
+                  type: string
+                  description: Name of the product
+                  enum: [tea, coffee, chocolate, sugar]
+                  example: "tea"
+                units:
+                  type: integer
+                  description: Number of units
+                  minimum: 1
+                  maximum: 5
+                  example: 1
+              required:
+                - productName
+                - units
+      responses:
+        '201':
+          description: Order line added successfully
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message
+                    example: "The product type should be tea, coffee, chocolate or sugar."
+  /api/orders/{orderId}/payment:
+    post:
+      summary: Pay for an order
+      description: Process payment for an existing order
+      tags:
+        - Orders
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          description: ID of the order to pay for
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: number
+                  format: float
+                  description: Payment amount in cents
+                  example: 150
+              required:
+                - amount
+      responses:
+        '202':
+          description: Payment accepted
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message
+                    example: "Not enough amount to pay the order. The order costs 2.00."

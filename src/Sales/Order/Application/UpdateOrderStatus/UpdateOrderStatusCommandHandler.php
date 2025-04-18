@@ -6,7 +6,6 @@ namespace AlexPerez\CoffeeMachine\Sales\Order\Application\UpdateOrderStatus;
 use AlexPerez\CoffeeMachine\Sales\Order\Domain\OrderRepositoryInterface;
 use AlexPerez\CoffeeMachine\Sales\Order\Domain\OrderStatus;
 use AlexPerez\CoffeeMachine\Shared\Domain\EventBus\EventBusInterface;
-use AlexPerez\CoffeeMachine\Shared\Domain\EventBus\EventSubscriberInterface;
 use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
 
 final readonly class UpdateOrderStatusCommandHandler

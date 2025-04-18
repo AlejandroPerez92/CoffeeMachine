@@ -19,6 +19,11 @@ final class OrderId
         return new self((string) Uuid::Create());
     }
 
+    public static function fromString(string $value): self
+    {
+        return new self($value);
+    }
+
     public function value(): string
     {
         return (string) $this->id;

@@ -1,0 +1,4 @@
+api_controllers:
+    resource: ../../src/Order/Order/Infrastructure/Controller/
+    type: attribute
+    prefix: /

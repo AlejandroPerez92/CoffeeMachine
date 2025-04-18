@@ -34,7 +34,7 @@ While I don't have a specific timeline, I do have a list of tasks to complete:
 7. Utilize an AMQBroker to dispatch domain events and make the consumers asynchronous.
 8. ~~Install Symfony API.~~
 9. Install Behat.
-10. Create endpoints to interact with the services.
+10. ~~Create endpoints to interact with the services~~.
 
 ## How it works
 ### Order your dirk
@@ -76,22 +76,26 @@ app:sales
 |Coffee|25.75|
 |Chocolate|36|
 
+## API Documentation
+
+The application provides a REST API for interacting with the coffee machine. 
+The API documentation is available in OpenAPI format at [public/openapi.yaml](public/openapi.yaml).
+
 ## Project set up
 
 Install and run the application.
 ```
-docker/composer install
-docker/up
+make up
 ```
 
 Examples of the use of the application.
 ```
-docker/console app:order-drink tea 0.5 1 -e
-docker/console app:order-drink coffee 0.5
-docker/console app:order-drink chocolate 1 --extra-hot
+make sh && bin/console app:order-drink tea 0.5 1
+make sh && bin/console app:order-drink coffee 0.5
+make sh && bin/console app:order-drink chocolate 1 --extra-hot
 ```
 
 Run tests
 ```
-docker/test
+make test
 ```
