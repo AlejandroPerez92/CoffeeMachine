@@ -4,18 +4,12 @@
                         xsi:schemaLocation="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
                         http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd">
 
-    <document name="AlexPerez\CoffeeMachine\Order\Order\Domain\Order" collection="orders">
-        <id type="order_id" strategy="NONE"  />
+    <document name="AlexPerez\CoffeeMachine\Order\Order\Domain\OrderLine">
+        <id type="order_line_id" strategy="NONE" />
 
-        <reference-many field="lines" target-document="AlexPerez\CoffeeMachine\Order\Order\Domain\OrderLine">
-            <cascade>
-                <persist/>
-            </cascade>
-        </reference-many>
+        <field field-name="productName" type="string" />
         <field field-name="total" type="money" />
+        <field field-name="units" type="positive_integer" />
         <field field-name="created" type="date_immutable" />
-        <field field-name="paid" type="boolean" />
-        <field field-name="hot" type="boolean" />
-
     </document>
 </doctrine-mongo-mapping>

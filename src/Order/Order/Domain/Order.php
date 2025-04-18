@@ -14,9 +14,12 @@ use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
 
 class Order extends AggregateRoot
 {
+    /**
+     * @param OrderLine[]|iterable $lines
+     */
     public function __construct(
         protected OrderId $id,
-        private array $lines,
+        private iterable $lines,
         private Money $total,
         private \DateTimeImmutable $created,
         private bool $paid,
@@ -44,7 +47,7 @@ class Order extends AggregateRoot
         return $this->id;
     }
 
-    public function lines(): array
+    public function lines(): iterable
     {
         return $this->lines;
     }

@@ -8,7 +8,7 @@ use AlexPerez\CoffeeMachine\Order\Order\Domain\Exception\LimitUnitsException;
 use AlexPerez\CoffeeMachine\Shared\Domain\Money\Money;
 use AlexPerez\CoffeeMachine\Shared\Domain\PositiveInteger\PositiveInteger;
 
-final readonly class OrderLine
+class OrderLine
 {
     public function __construct(
         public OrderLineId $id,

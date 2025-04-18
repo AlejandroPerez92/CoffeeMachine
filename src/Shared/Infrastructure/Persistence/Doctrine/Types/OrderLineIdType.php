@@ -11,6 +11,7 @@ use Doctrine\ODM\MongoDB\Types\Type;
 class OrderLineIdType extends Type
 {
     use ClosureToPHP;
+
     public function convertToDatabaseValue($value)
     {
         return $value instanceof OrderLineId ? $value->value() : $value;
@@ -18,6 +19,10 @@ class OrderLineIdType extends Type
 
     public function convertToPHPValue($value)
     {
+        if ($value instanceof OrderLineId) {
+            return $value;
+        }
+
         return $value !== null ? new OrderLineId($value) : null;
     }
 }
