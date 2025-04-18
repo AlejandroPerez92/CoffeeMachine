@@ -13,6 +13,7 @@ doctrine_mongodb:
         order_line_id: AlexPerez\CoffeeMachine\Shared\Infrastructure\Persistence\Doctrine\Types\OrderLineIdType
         positive_integer: AlexPerez\CoffeeMachine\Shared\Infrastructure\Persistence\Doctrine\Types\PositiveIntegerType
         order_line: AlexPerez\CoffeeMachine\Shared\Infrastructure\Persistence\Doctrine\Types\OrderLineType
+        order_status: AlexPerez\CoffeeMachine\Shared\Infrastructure\Persistence\Doctrine\Types\OrderStatusType
     document_managers:
         default:
             auto_mapping: true
@@ -22,3 +23,8 @@ doctrine_mongodb:
                     type: xml
                     dir: '%kernel.project_dir%/config/doctrine/order'
                     prefix: 'AlexPerez\CoffeeMachine\Order\Order\Domain'
+                Sales:
+                    is_bundle: false
+                    type: xml
+                    dir: '%kernel.project_dir%/config/doctrine/sales'
+                    prefix: 'AlexPerez\CoffeeMachine\Sales\Order\Domain'

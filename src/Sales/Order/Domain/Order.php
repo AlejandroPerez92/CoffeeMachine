@@ -7,7 +7,7 @@ use AlexPerez\CoffeeMachine\Sales\Order\Domain\Event\OrderLinePaid;
 use AlexPerez\CoffeeMachine\Shared\Domain\Aggregate\AggregateRoot;
 use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
 
-final class Order extends AggregateRoot
+class Order extends AggregateRoot
 {
     /**
      * @param OrderId $id
@@ -16,14 +16,14 @@ final class Order extends AggregateRoot
      */
     public function __construct(
         public readonly OrderId $id,
-        private array $lines,
+        private iterable $lines,
         private OrderStatus $status,
     ) {
     }
 
     public static function create(
         OrderId $id,
-        array $lines,
+        iterable $lines,
     ): self {
         return new self(
             $id,
@@ -42,7 +42,7 @@ final class Order extends AggregateRoot
         return $this->id;
     }
 
-    public function lines(): array
+    public function lines(): iterable
     {
         return $this->lines;
     }

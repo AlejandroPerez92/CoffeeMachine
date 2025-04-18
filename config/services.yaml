@@ -81,7 +81,9 @@ services:
     AlexPerez\CoffeeMachine\Order\Order\Domain\PromotionRepositoryInterface: '@alex-perez.promotion.in_memory_repository'
 
     alex-perez.sales.order.repository:
-        class: AlexPerez\CoffeeMachine\Sales\Order\Infrastructure\InMemoryOrderRepository
+        class: AlexPerez\CoffeeMachine\Sales\Order\Infrastructure\MongoDBOrderRepository
+        arguments:
+            - '@doctrine_mongodb.odm.default_document_manager'
 
     AlexPerez\CoffeeMachine\Sales\Order\Domain\OrderRepositoryInterface: '@alex-perez.sales.order.repository'
 
