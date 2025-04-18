@@ -4,9 +4,15 @@ doctrine_mongodb:
     auto_generate_hydrator_classes: true
     connections:
         default:
-            server: 'mongodb://root:coffee_machine@mongodb:27017'
+            server: '%env(resolve:MONGODB_URL)%'
             options: {}
     default_database: coffee_machine
+    types:
+        order_id: AlexPerez\CoffeeMachine\Shared\Infrastructure\Persistence\Doctrine\Types\OrderIdType
+        money: AlexPerez\CoffeeMachine\Shared\Infrastructure\Persistence\Doctrine\Types\MoneyType
+        order_line_id: AlexPerez\CoffeeMachine\Shared\Infrastructure\Persistence\Doctrine\Types\OrderLineIdType
+        positive_integer: AlexPerez\CoffeeMachine\Shared\Infrastructure\Persistence\Doctrine\Types\PositiveIntegerType
+        order_line: AlexPerez\CoffeeMachine\Shared\Infrastructure\Persistence\Doctrine\Types\OrderLineType
     document_managers:
         default:
             auto_mapping: true

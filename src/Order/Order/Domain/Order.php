@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace AlexPerez\CoffeeMachine\Order\Order\Domain;
@@ -13,21 +14,14 @@ use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
 
 class Order extends AggregateRoot
 {
-    public function __construct(private OrderId $id, private array $lines, private Money $total, private \DateTimeImmutable $created, private bool $paid, private bool $hot)
-    {
-    }
-
-    // Required for Doctrine MongoDB ODM
-    public static function fromPrimitives(string $id, array $lines, array $total, \DateTimeImmutable $created, bool $paid, bool $hot): self
-    {
-        return new self(
-            new OrderId($id),
-            $lines,
-            new Money($total['value'] ?? 0),
-            $created,
-            $paid,
-            $hot
-        );
+    public function __construct(
+        protected OrderId $id,
+        private array $lines,
+        private Money $total,
+        private \DateTimeImmutable $created,
+        private bool $paid,
+        private bool $hot,
+    ) {
     }
 
     public static function create(OrderId $id, bool $hot): self
@@ -92,7 +86,7 @@ class Order extends AggregateRoot
         }
 
         $this->lines[$line->productName] = $line;
-        $this->total->increment($line->total);
+        $this->total = $this->total->increment($line->total);
 
         $this->pushEvent(OrderLineAdded::fromOrder($this->id, $line));
     }

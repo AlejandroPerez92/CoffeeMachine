@@ -5,11 +5,11 @@
                         http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd">
 
     <document name="AlexPerez\CoffeeMachine\Order\Order\Domain\Order" collection="orders">
-        <id field-name="id" strategy="NONE" />
+        <id type="order_id" strategy="NONE"  />
 
-        <field field-name="lines" type="hash" />
-        <field field-name="total" type="raw" />
-        <field field-name="created" type="date" />
+        <field field-name="lines" type="order_line" />
+        <field field-name="total" type="money" />
+        <field field-name="created" type="date_immutable" />
         <field field-name="paid" type="boolean" />
         <field field-name="hot" type="boolean" />
 

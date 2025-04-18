@@ -8,6 +8,7 @@
     "ext-ctype": "*",
     "ext-iconv": "*",
     "ext-redis": "*",
+    "ext-mongodb": "*",
     "doctrine/mongodb-odm-bundle": "*",
     "league/tactician": "*",
     "league/tactician-bundle": "*",

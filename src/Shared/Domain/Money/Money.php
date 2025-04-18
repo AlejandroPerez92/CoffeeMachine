@@ -33,9 +33,11 @@ final class Money
         return $this->value < $value->value();
     }
 
-    public function increment(Money $value): void
+    public function increment(Money $value): self
     {
         $this->value += $value->value();
+
+        return new self($this->value);
     }
 
     public function multiply(PositiveInteger $value): void
