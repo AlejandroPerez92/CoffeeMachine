@@ -11,10 +11,23 @@ use AlexPerez\CoffeeMachine\Shared\Domain\Money\Money;
 use AlexPerez\CoffeeMachine\Shared\Domain\PositiveInteger\PositiveInteger;
 use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
 
-final class Order extends AggregateRoot
+class Order extends AggregateRoot
 {
     public function __construct(private OrderId $id, private array $lines, private Money $total, private \DateTimeImmutable $created, private bool $paid, private bool $hot)
     {
+    }
+
+    // Required for Doctrine MongoDB ODM
+    public static function fromPrimitives(string $id, array $lines, array $total, \DateTimeImmutable $created, bool $paid, bool $hot): self
+    {
+        return new self(
+            new OrderId($id),
+            $lines,
+            new Money($total['value'] ?? 0),
+            $created,
+            $paid,
+            $hot
+        );
     }
 
     public static function create(OrderId $id, bool $hot): self

@@ -8,4 +8,9 @@ interface OrderRepositoryInterface
     public function getByIdOrFail(OrderId $id): Order;
 
     public function save(Order $order): void;
+
+    /**
+     * @return Order[]
+     */
+    public function findAll(): array;
 }

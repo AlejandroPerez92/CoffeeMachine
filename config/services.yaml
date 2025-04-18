@@ -1,3 +1,7 @@
+parameters:
+    env(MONGODB_URL): ''
+    env(MONGODB_DB): ''
+
 imports:
     - { resource: fixtures/products.yaml }
     - { resource: fixtures/promotions.yaml }
@@ -65,7 +69,9 @@ services:
             - '%products.map.fixtures%'
     AlexPerez\CoffeeMachine\Order\Order\Domain\ProductRepositoryInterface: '@alex-perez.product.in_memory_repository'
     alex-perez.order.repository:
-        class: AlexPerez\CoffeeMachine\Order\Order\Infrastructure\InMemoryOrderRepository
+        class: AlexPerez\CoffeeMachine\Order\Order\Infrastructure\MongoDBOrderRepository
+        arguments:
+            - '@doctrine_mongodb.odm.default_document_manager'
     AlexPerez\CoffeeMachine\Order\Order\Domain\OrderRepositoryInterface: '@alex-perez.order.repository'
 
     alex-perez.promotion.in_memory_repository:

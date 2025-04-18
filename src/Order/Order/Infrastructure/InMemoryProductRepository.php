@@ -16,7 +16,7 @@ final class InMemoryProductRepository implements ProductRepositoryInterface
     {
     }
 
-    public function persist(Product $product)
+    public function persist(Product $product): void
     {
         $this->data[$product->name] = [
             'price' => $product->price->value(),

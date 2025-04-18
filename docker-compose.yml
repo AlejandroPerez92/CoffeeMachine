@@ -20,3 +20,17 @@ services:
 #            - "3305:3306"
     redis:
         image: redis:latest
+
+    mongodb:
+        image: mongo:latest
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: root
+            MONGO_INITDB_ROOT_PASSWORD: coffee_machine
+            MONGO_INITDB_DATABASE: coffee_machine
+        ports:
+            - "27017:27017"
+        volumes:
+            - mongodb_data:/data/db
+
+volumes:
+    mongodb_data:

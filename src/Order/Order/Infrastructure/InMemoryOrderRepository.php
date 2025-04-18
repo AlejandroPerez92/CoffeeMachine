@@ -27,4 +27,9 @@ final class InMemoryOrderRepository implements OrderRepositoryInterface
     {
         $this->data[$order->id()->value()] = $order;
     }
+
+    public function findAll(): array
+    {
+        // TODO: Implement findAll() method.
+    }
 }
