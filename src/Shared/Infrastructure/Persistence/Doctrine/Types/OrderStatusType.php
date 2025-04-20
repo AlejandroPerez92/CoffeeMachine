@@ -12,12 +12,12 @@ class OrderStatusType extends Type
 {
     use ClosureToPHP;
 
-    public function convertToDatabaseValue($value)
+    public function convertToDatabaseValue($value): mixed
     {
         return $value instanceof OrderStatus ? $value->value : $value;
     }
 
-    public function convertToPHPValue($value)
+    public function convertToPHPValue($value): mixed
     {
         if ($value === null) {
             return null;

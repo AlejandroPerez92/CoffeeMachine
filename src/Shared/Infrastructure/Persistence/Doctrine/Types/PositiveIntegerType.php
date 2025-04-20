@@ -12,12 +12,12 @@ class PositiveIntegerType extends Type
 {
     use ClosureToPHP;
 
-    public function convertToDatabaseValue($value)
+    public function convertToDatabaseValue($value): mixed
     {
         return $value instanceof PositiveInteger ? $value->value() : $value;
     }
 
-    public function convertToPHPValue($value)
+    public function convertToPHPValue($value): mixed
     {
         return $value !== null ? new PositiveInteger($value) : null;
     }

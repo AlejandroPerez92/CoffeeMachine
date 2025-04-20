@@ -16,7 +16,7 @@ class OrderLineType extends Type
 {
     use ClosureToPHP;
 
-    public function convertToDatabaseValue($value)
+    public function convertToDatabaseValue($value): mixed
     {
         if (!is_array($value)) {
             return $value;
@@ -40,7 +40,7 @@ class OrderLineType extends Type
         return $result;
     }
 
-    public function convertToPHPValue($value)
+    public function convertToPHPValue($value): mixed
     {
         if (!is_array($value)) {
             return $value;

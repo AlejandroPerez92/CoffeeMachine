@@ -12,12 +12,12 @@ class OrderLineIdType extends Type
 {
     use ClosureToPHP;
 
-    public function convertToDatabaseValue($value)
+    public function convertToDatabaseValue($value): mixed
     {
         return $value instanceof OrderLineId ? $value->value() : $value;
     }
 
-    public function convertToPHPValue($value)
+    public function convertToPHPValue($value): mixed
     {
         if ($value instanceof OrderLineId) {
             return $value;
