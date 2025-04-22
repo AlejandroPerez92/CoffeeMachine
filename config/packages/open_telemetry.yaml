@@ -1,0 +1,83 @@
+open_telemetry:
+  service:
+    namespace: 'MyCompany'
+    name: 'CoffeeMachine'
+    version: '1.0.0'
+    environment: '%kernel.environment%'
+  traces:
+    tracers:
+      main:
+        provider: 'open_telemetry.traces.providers.default'
+    providers:
+      default:
+        type: default
+        sampler: always_on
+        processors:
+          - 'open_telemetry.traces.processors.simple'
+    processors:
+      simple:
+        type: simple
+        exporter: 'open_telemetry.traces.exporters.otlp'
+    exporters:
+      otlp:
+        dsn: grpc+otlp://otel-collector:4317
+  metrics:
+    meters:
+      main:
+        provider: 'open_telemetry.metrics.providers.default'
+        name: 'CoffeeMachine'
+    providers:
+      default:
+        type: default
+        exporter: 'open_telemetry.metrics.exporters.otlp'
+    exporters:
+      otlp:
+        dsn: grpc+otlp://otel-collector:4317
+        options:
+          timeout: 10
+          compression: gzip
+  logs:
+    monolog:
+      enabled: true
+      handlers:
+        default:
+          provider: 'open_telemetry.logs.providers.default'
+          level: info
+          bubble: true
+    loggers:
+      main:
+        provider: 'open_telemetry.logs.providers.default'
+        name: 'CoffeeMachine'
+        version: '1.0.0'
+    providers:
+      default:
+        type: default
+        processor: 'open_telemetry.logs.processors.batch'
+    processors:
+      simple:
+        type: simple
+        exporter: 'open_telemetry.logs.exporters.otlp'
+      batch:
+        type: batch
+        exporter: 'open_telemetry.logs.exporters.otlp'
+        batch:
+          clock: 'open_telemetry.clock'
+          max_queue_size: 2048
+          schedule_delay: 100
+          export_timeout: 30000
+          max_export_batch_size: 512
+          auto_flush: true
+    exporters:
+      otlp:
+        dsn: grpc+otlp://otel-collector:4317
+        options:
+          timeout: 10
+          compression: gzip
+  instrumentation:
+    http_kernel:
+      tracing:
+        enabled: true
+        tracer: 'open_telemetry.traces.tracers.main'
+      metering:
+        enabled: true
+        meter: 'open_telemetry.metrics.meters.main'

@@ -8,21 +8,32 @@ use AlexPerez\CoffeeMachine\Order\Order\Infrastructure\Controller\Request\Create
 use AlexPerez\CoffeeMachine\Order\Order\Infrastructure\Controller\Response\CreateOrderResponse;
 use AlexPerez\CoffeeMachine\Shared\Domain\Order\OrderId;
 use League\Tactician\CommandBus;
+use OpenTelemetry\API\Metrics\MeterInterface;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
 class CreateOrderController
 {
-    public function __construct(private CommandBus $commandBus)
+    public function __construct(
+        private CommandBus $commandBus,
+        private LoggerInterface $logger,
+        private MeterInterface $meter,
+    )
     {
     }
 
     #[Route('/api/orders', name: 'create_order', methods: ['POST'])]
     public function __invoke(#[MapRequestPayload] CreateOrderRequest $request): JsonResponse
     {
+        $this->logger->error('Error log - This is a test error');
+        $meter = $this->meter->createUpDownCounter('test');
+        $meter->add(1);
+
         $orderId = OrderId::create();
+
         $this->commandBus->handle(new CreateOrderCommand($orderId, $request->extraHot));
 
         return new JsonResponse(

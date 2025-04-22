@@ -13,3 +13,4 @@ vendor/
 phpstan.neon
 ###< phpstan/phpstan ###
 /out/
+.env.local
