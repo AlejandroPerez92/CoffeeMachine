@@ -61,6 +61,10 @@ services:
         tags:
             - { name: domain.event_subscriber }
 
+    AlexPerez\CoffeeMachine\Shared\Infrastructure\EventSubscriber\OpenTelemetryLogsFlushSubscriber:
+        tags:
+            - { name: kernel.event_subscriber }
+
     ### Repositories
     alex-perez.product.in_memory_repository:
         class: AlexPerez\CoffeeMachine\Order\Order\Infrastructure\InMemoryProductRepository
@@ -117,3 +121,7 @@ services:
     alex-perez.event_bus:
         class: AlexPerez\CoffeeMachine\Shared\Infrastructure\Eventbus\EventBusWrapper
     AlexPerez\CoffeeMachine\Shared\Domain\EventBus\EventBusInterface: '@alex-perez.event_bus'
+
+    OpenTelemetry\SDK\Logs\LoggerProviderInterface: '@open_telemetry.logs.providers.default'
+
+    AlexPerez\CoffeeMachine\Shared\Infrastructure\Persistence\Doctrine\Types\ObservableDoctrineEventSubscriber: ~

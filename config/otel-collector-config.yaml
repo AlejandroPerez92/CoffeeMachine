@@ -1,0 +1,43 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+
+processors:
+  batch:
+    timeout: 1s
+    send_batch_size: 1024
+
+exporters:
+  awscloudwatchlogs:
+    region: eu-west-1
+    log_group_name: CoffeeMachine-logs
+    log_stream_name: otel-logs
+  awsxray:
+    region: eu-west-1
+  awsemf:
+    region: eu-west-1
+    namespace: CoffeeMachine
+    log_group_name: CoffeeMachine-metrics
+    log_stream_name: otel-metrics
+    metric_declarations:
+      - dimensions: [[service.name]]
+        metric_name_selectors: [".*"]
+
+service:
+  pipelines:
+    logs:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [awscloudwatchlogs]
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [awsxray]
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [awsemf]

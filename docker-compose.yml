@@ -18,3 +18,12 @@ services:
             MONGO_INITDB_DATABASE: coffee_machine
         ports:
             - "27017:27017"
+
+    otel-collector:
+        image: otel/opentelemetry-collector-contrib:latest
+        volumes:
+            - ./config/otel-collector-config.yaml:/etc/otelcol-contrib/config.yaml
+        environment:
+            AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+            AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+            AWS_REGION: ${AWS_REGION}

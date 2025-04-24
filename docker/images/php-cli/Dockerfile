@@ -13,6 +13,10 @@ RUN pecl install redis && docker-php-ext-enable redis
 RUN apt-get install -y libssl-dev pkg-config
 RUN pecl install mongodb && docker-php-ext-enable mongodb
 
+RUN apt-get install -y libz-dev
+RUN pecl install opentelemetry && docker-php-ext-enable opentelemetry
+RUN pecl install grpc && docker-php-ext-enable grpc
+
 WORKDIR /var/www/html
 
 CMD ["php", "-S", "0.0.0.0:8000", "-t", "/var/www/html/public"]
