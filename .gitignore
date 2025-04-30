@@ -13,3 +13,5 @@ vendor/
 phpstan.neon
 ###< phpstan/phpstan ###
 /out/
+/.env.local
+/packages/symfony-websocket-cli/node_modules/

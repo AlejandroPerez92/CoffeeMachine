@@ -1,5 +1,5 @@
 up:
-	docker compose up -d --build
+	docker compose up -d
 
 sh:
 	docker compose exec php bash

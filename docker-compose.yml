@@ -6,6 +6,7 @@ services:
             - '.:/var/www/html'
         ports:
             - '8080:8000'
+            - '8081:8081'
 
     redis:
         image: redis:latest

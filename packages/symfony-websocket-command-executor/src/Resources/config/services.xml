@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+        https://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <!-- Command Executor Service -->
+        <service id="alexperez.websocket_command_executor.command_executor" class="AlexPerez\SymfonyWebsocketCommandExecutor\Command\CommandExecutor">
+            <argument type="service" id="kernel" />
+        </service>
+
+        <!-- WebSocket Server Command -->
+        <service id="alexperez.websocket_command_executor.command.start_websocket_server" class="AlexPerez\SymfonyWebsocketCommandExecutor\Command\StartWebSocketServerCommand">
+            <argument type="service" id="alexperez.websocket_command_executor.command_executor" />
+            <argument type="service" id="kernel" />
+            <tag name="console.command" />
+        </service>
+
+        <!-- Alias for autowiring -->
+        <service id="AlexPerez\SymfonyWebsocketCommandExecutor\Command\CommandExecutor" alias="alexperez.websocket_command_executor.command_executor" />
+    </services>
+</container>
